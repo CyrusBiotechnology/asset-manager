@@ -1,6 +1,6 @@
 # Django settings for assets project.
 
-from local_settings import *
+from settings_local import *
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
