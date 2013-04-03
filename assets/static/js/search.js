@@ -1,13 +1,17 @@
 
 var search_element = '#search';
+var search_url = 'se?q=';
 
 function query(element) {
-  $.get('');
+  var q = $(element).val();
+  $.get(search_url+q, function(data){
+    console.log(data);
+  });
 }
 
 $(function(){
   $(search_element).watermark('search...');
   $(search_element).keyupQueue(function () {
-    query();
+    query(search_element);
   });
 });
