@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block extra_head %}
+  <script src="/s/js/search.js"></script>
+{% endblock %}
+
+{% block header %}
+  <div class="clear center-content">
+    {% include "search.html" %}
+  </div>
+{% endblock %}
+
+{% block content %}
+  {% include "search_results.html" %}
+{% endblock %}
