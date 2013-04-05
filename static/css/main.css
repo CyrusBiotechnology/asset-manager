@@ -1,0 +1,32 @@
+/* main css file (assets app)
+
+Peter Novotnak :: 2013 */
+
+html body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #EFEFEF;
+}
+
+.clear {
+  clear: both;
+}
+
+.center-content {
+  width: 100%;
+  text-align: center;
+}
+
+.wrapper {
+  background-color: #FEFEFE;
+  min-width: 200px;
+  max-width: 900px;
+  width: 90%;
+  margin: 20px auto;
+  padding: 10px 1%;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 2px #DDD;
+}
