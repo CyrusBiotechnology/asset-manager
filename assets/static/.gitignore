@@ -1,0 +1,2 @@
+# these files should be collected by 'manage.py collectstatic'
+./*
