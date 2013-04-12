@@ -1,0 +1,8 @@
+<div class="display-asset">
+  {% csrf_token %}
+  {% for field in form %}
+    <div class=""><p>{{ field.label_tag }}: {{ field.value }}</p></div>
+  {% endfor %}
+  <a class="editlink" href="{% url model id %}/edit">Edit this {{ model }}</a>
+  <img class="asset-qr" title="Link to this {{ model }} ({{ qr_url }})" src="data:image/gif;base64,{{ qr }}" />
+</div>

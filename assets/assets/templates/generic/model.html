@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block extra_head %}
+
+  {# easy js extensions #}
+  {% for js in extra_js %}
+    <script src="/s/js/{{ extra_js }}"></script>
+  {% endfor %}
+
+  {# easy css extensions #}
+  {% for style in extra_style %}
+    <link rel="stylesheet" type="text/css" href="/s/css/{{ style }}">
+  {% endfor %}
+{% endblock %}
+
+{% block header %}
+  {% include "header-links.html" %}
+{% endblock %}
+
+{% block content %}
+  {% include display_template %}
+{% endblock %}

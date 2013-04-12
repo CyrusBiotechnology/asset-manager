@@ -19,6 +19,22 @@ import qrcode
 import StringIO
 
 
+modelModels = {
+    'asset': Asset,
+    'location': Location,
+    'make': AssetMake,
+    'model': AssetModel,
+}
+
+
+modelForms = {
+    'asset': AssetForm,
+    'location': LocationForm,
+    'make': MakeForm,
+    'model': ModelForm,
+}
+
+
 def dummy(request):
     return('')
 
@@ -41,52 +57,6 @@ def ajax_search(request):
     return HttpResponse(data, mimetype="application/json")
 
 
-def create_asset(request):
-    display_template = 'assets/asset-form.html'
-    form = AssetForm()
-    if request.method == 'POST':
-        form = AssetForm(request.POST)
-        if form.is_valid():
-            return HttpResponseRedirect('/')
-
-    return render_to_response(
-        'assets/asset.html',
-        {'form': form,
-        'display_template': display_template},
-        context_instance=RequestContext(request))
-
-
-def asset(request, aID):
-
-    display_template = 'assets/asset-display.html'
-    asset = get_object_or_404(Asset, pk=aID)
-    form = AssetForm(instance=asset)
-    '''
-    try:
-        model = AssetModel(asset.model)
-        make = AssetMake(model.make)
-    except ObjectDoesNotExist:
-        pass
-    '''
-
-    output = StringIO.StringIO()  # This is sort of like temp, but suaver
-    qr_url = HOSTNAME + reverse('asset', kwargs={'aID': aID})
-    qr_url = qr_url.lower()
-    img = qrcode.make(qr_url)
-    img.save(output, 'gif')
-    img = output.getvalue().encode('base64')
-
-    return render_to_response(
-        'assets/asset.html',
-        {'form': form,
-        'display_template': display_template,
-        'qr': img,
-        'qr_url': qr_url,
-        'id': aID
-        },
-        context_instance=RequestContext(request))
-
-
 def edit_asset(request, aID):
 
     display_template = 'assets/asset-form.html'
@@ -103,3 +73,100 @@ def edit_asset(request, aID):
         {'form': form,
         'display_template': display_template},
         context_instance=RequestContext(request))
+
+
+def create_object(request, model):
+
+    check_form(model)
+
+    display_template = 'generic/model-form.html'
+    form = modelForms[model]()
+
+    if request.method == 'POST':
+        form = modelForms[model](request.POST)
+        if form.is_valid():
+            return HttpResponseRedirect('/')
+
+    return render_to_response(
+        'generic/model.html',
+        {
+            'form': form,
+            'model': model,
+            'display_template': display_template
+        },
+        context_instance=RequestContext(request)
+    )
+
+
+def display_object(request, ID, model):
+
+    check_model()
+
+    display_template = 'generic/model-display.html'
+    model_object = modelModels[model]
+    model_object = get_object_or_404(model_object, pk=ID)
+    form = modelForms[model](instance=model_object)
+
+    qr_base64 = get_qrcode()
+
+    extra_style = ['object.css']
+
+    return render_to_response(
+        'generic/model.html',
+        {
+            'id': ID,
+            'qr': qr_base64,
+            'qr_url': '',
+            'form': form,
+            'model': model,
+            'extra_style': extra_style,
+            'display_template': display_template,
+        },
+        context_instance=RequestContext(request)
+    )
+
+
+def edit_object(request, ID, model):
+
+    display_template = 'generic/model-form.html'
+    form = get_form(model)
+
+    if request.method == 'POST':
+        form = modelForms[model](request.POST)
+        if form.is_valid():
+            return HttpResponseRedirect('/')
+
+    return render_to_response(
+        'generic/model.html',
+        {
+            'form': form,
+            'model': model,
+            'display_template': display_template
+        },
+        context_instance=RequestContext(request)
+    )
+
+
+def check_model(model):
+    try:
+        modelModels[model]()
+    except KeyError:
+        return HttpResponseBadRequest()
+
+
+def check_form(model):
+    try:
+        modelForms[model]()
+    except KeyError:
+        return HttpResponseBadRequest()
+
+
+def get_qrcode():
+    output = StringIO.StringIO()  # This is sort of like temp, but suaver
+    #qr_url = HOSTNAME + reverse('assets', kwargs={'aID': aID})
+    qr_url = ''
+    qr_url = qr_url.lower()
+    img = qrcode.make(qr_url)
+    img.save(output, 'gif')
+    img = output.getvalue().encode('base64')
+    return img

@@ -1,6 +1,7 @@
 # Django settings for assets project.
-
+from django.conf import global_settings
 import socket
+
 
 try:
     HOSTNAME = socket.gethostname()
@@ -52,6 +53,18 @@ MEDIA_URL = ''
 # Example: "http://example.com/static/", "http://static.example.com/"
 STATIC_URL = '/s/'
 
+INSTALLED_APPS = (
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.sites',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'django.contrib.admin',
+    'assets',
+    'stronghold',
+)
+
 # List of finder classes that know how to find static files in
 # various locations.
 STATICFILES_FINDERS = (
@@ -73,9 +86,15 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    # Uncomment the next line for simple clickjacking protection:
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'stronghold.middleware.LoginRequiredMiddleware',
 )
+
+
+TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
+    'django.core.context_processors.request',
+)
+
 
 ROOT_URLCONF = 'assets.urls'
 

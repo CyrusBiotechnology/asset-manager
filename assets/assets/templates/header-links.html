@@ -1,1 +1,12 @@
-<a href="{% url 'create_asset' %}">Create Asset</a>
+<nav class="menu create-menu">
+
+  {# breadcrumbs #}
+  {% if request.path %}
+    {% if request.path != '/' %}
+      <a href="{% url 'index' %}">Home</a>&nbsp;&middot;
+    {% endif %}
+  {% endif %}
+
+  <a href="{% url 'create_asset' %}">Create Asset</a>
+  <a href="{% url 'create_location' %}">Create Location</a>
+</nav>
