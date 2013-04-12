@@ -1,6 +1,11 @@
 # Django settings for assets project.
 
-from settings_local import *
+import socket
+
+try:
+    HOSTNAME = socket.gethostname()
+except:
+    HOSTNAME = 'localhost'
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -76,3 +81,8 @@ ROOT_URLCONF = 'assets.urls'
 
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'assets.wsgi.application'
+
+try:
+    from settings_local import *
+except ImportError, exp:
+    pass

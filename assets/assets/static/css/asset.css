@@ -1,0 +1,19 @@
+.wrapper p {
+  display: inline-block;
+}
+
+.display-asset {
+  width: 90%;
+  margin: 10px auto;
+}
+
+.asset-qr {
+  display: block;
+  margin: 0 auto;
+}
+
+.editlink {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}

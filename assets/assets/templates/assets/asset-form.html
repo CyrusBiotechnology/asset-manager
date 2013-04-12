@@ -1,0 +1,14 @@
+<form method="POST" class="asset-form" {% if form.is_multipart %}enctype="multipart/form-data"{% endif %}>
+  {% csrf_token %}
+  {% for field in form %}
+    {% if field.errors %}
+    <ul class="errorlist">
+      {% for error in field.errors %}
+        <li>{{ error }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    <div class="container">{{ field.label_tag }}<span class="form-field-container">{{ field }}</span></div>
+  {% endfor %}
+  <button>Submit</button>
+</form>

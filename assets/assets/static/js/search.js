@@ -3,7 +3,7 @@ var search_element = '#search';
 var results_element = '#search-results';
 var search_url = 'se?q=';
 
-SR_template = 'search-result-template';
+SR_template = '';
 
 function query() {
   var q = $(search_element).val();
@@ -14,13 +14,18 @@ function query() {
 
   $.get(search_url+q, function(data){
     $.each(data, function(){
+      search_res = this.fields;
       window.search_res = this;
-      $(results_element).html($.Mustache.render(SR_template, this));
+      console.log(this);
+      console.log(SR_template);
+      console.log(Mustache.render(SR_template, this));
+      $(results_element).html(Mustache.render(SR_template, this));
     });
   });
 }
 
 $(function(){
+  SR_template = $('#search-result-template').html();
   $(search_element).watermark('search...');
   $(search_element).keyupQueue(function () {
     query();
