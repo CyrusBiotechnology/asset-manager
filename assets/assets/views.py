@@ -59,7 +59,7 @@ def ajax_search(request):
 
 def edit_asset(request, aID):
 
-    display_template = 'assets/asset-form.html'
+    object_template = 'assets/asset-form.html'
     asset = get_object_or_404(Asset, pk=aID)
     form = AssetForm(instance=asset)
 
@@ -71,7 +71,7 @@ def edit_asset(request, aID):
     return render_to_response(
         'assets/asset.html',
         {'form': form,
-        'display_template': display_template},
+        'object_template': object_template},
         context_instance=RequestContext(request))
 
 
@@ -79,7 +79,7 @@ def create_object(request, model):
 
     check_form(model)
 
-    display_template = 'generic/model-form.html'
+    object_template = 'generic/model-form.html'
     form = modelForms[model]()
 
     if request.method == 'POST':
@@ -92,7 +92,7 @@ def create_object(request, model):
         {
             'form': form,
             'model': model,
-            'display_template': display_template
+            'object_template': object_template
         },
         context_instance=RequestContext(request)
     )
@@ -100,9 +100,9 @@ def create_object(request, model):
 
 def display_object(request, ID, model):
 
-    check_model()
+    check_model(model)
 
-    display_template = 'generic/model-display.html'
+    object_template = 'generic/model-display.html'
     model_object = modelModels[model]
     model_object = get_object_or_404(model_object, pk=ID)
     form = modelForms[model](instance=model_object)
@@ -120,7 +120,7 @@ def display_object(request, ID, model):
             'form': form,
             'model': model,
             'extra_style': extra_style,
-            'display_template': display_template,
+            'object_template': object_template,
         },
         context_instance=RequestContext(request)
     )
@@ -128,8 +128,14 @@ def display_object(request, ID, model):
 
 def edit_object(request, ID, model):
 
-    display_template = 'generic/model-form.html'
-    form = get_form(model)
+    check_model(model)
+
+    object_template = 'generic/model-form.html'
+    model_object = modelModels[model]
+    model_object = get_object_or_404(model_object, pk=ID)
+    form = modelForms[model](instance=model_object)
+
+    extra_style = ['object.css']
 
     if request.method == 'POST':
         form = modelForms[model](request.POST)
@@ -139,9 +145,11 @@ def edit_object(request, ID, model):
     return render_to_response(
         'generic/model.html',
         {
+            'id': ID,
             'form': form,
             'model': model,
-            'display_template': display_template
+            'extra_style': extra_style,
+            'object_template': object_template,
         },
         context_instance=RequestContext(request)
     )
