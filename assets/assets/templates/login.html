@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block extra_head %}
+<script src="{{ STATIC_URL }}js/login.js"></script>
+<style type="text/css">
+
+  input {
+    display: block;
+    margin: 10px 0;
+    width: 90%;
+  }
+
+  .error {
+    display: block;
+    width: 100%;
+    text-align: center;
+    color: #F98888;
+  }
+
+  form {
+    display: table;
+    background-color: rgba(255,255,255,.4);
+    box-shadow: 0 0 10px rgba(200,200,200,.5);
+    border-radius: 20px;
+    padding: 30px;
+    margin: 20px auto;
+  }
+
+  .login-title {
+    color: #F17777;
+    text-align: center;
+    padding: 5px 0;
+    border-top: 1px solid rgba(100,100,100,.5);
+    border-bottom: 1px solid rgba(100,100,100,.5);
+  }
+
+</style>
+{% endblock %}
+
+{% block header %}
+<h2 class="login-title">LOGIN REQUIRED</h2>
+{% endblock %}
+
+{% block content %}
+
+{% if form.errors %}
+  <p class="error">Your username and password didn't match, please try again.</p>
+{% endif %}
+
+<form method="POST">
+  {% csrf_token %}
+    {% for field in form %}
+      {{ field }}
+      {% if field.errors %}
+      {% endif %}
+    {% endfor %}
+    <br>
+    <input type="hidden" name="next" value="{{ next }}" />
+    <input type="submit">
+  </div>
+</form>
+
+{% endblock %}

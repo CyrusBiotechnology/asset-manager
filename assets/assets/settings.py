@@ -101,6 +101,12 @@ ROOT_URLCONF = 'assets.urls'
 # Python dotted path to the WSGI application used by Django's runserver.
 WSGI_APPLICATION = 'assets.wsgi.application'
 
+STRONGHOLD_DEFAULTS = True
+STRONGHOLD_PUBLIC_URLS = (
+    '/admin',
+    '/accounts'
+)
+
 try:
     from settings_local import *
 except ImportError, exp:

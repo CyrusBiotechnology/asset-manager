@@ -1,15 +1,9 @@
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.core import serializers
-#from django.core.exceptions import ObjectDoesNotExist
 from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseRedirect
-from django.core.urlresolvers import reverse
 
-#from django.db.models import Q
-#results = Asset.objects.filter(Q(description=query) | Q(external_id=query) | Q(serial_number=query)).order_by('id')
-
-from settings import HOSTNAME
-from assets.models import Asset  # , AssetMake, AssetModel
+from assets.models import Asset
 from assets.forms import *
 
 # Third party libraries
@@ -17,7 +11,6 @@ import qrcode
 
 # Builtins
 import StringIO
-
 
 modelModels = {
     'asset': Asset,

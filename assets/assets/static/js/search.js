@@ -25,6 +25,7 @@ function query() {
 }
 
 $(function(){
+  $(search_element).focus();
   SR_template = $('#search-result-template').html();
   $(search_element).watermark('search...');
   $(search_element).keyupQueue(function () {

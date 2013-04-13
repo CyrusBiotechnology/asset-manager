@@ -6,7 +6,9 @@
       <a href="{% url 'index' %}">Home</a>&nbsp;&middot;
     {% endif %}
   {% endif %}
-
-  <a href="{% url 'create_asset' %}">Create Asset</a>
-  <a href="{% url 'create_location' %}">Create Location</a>
+  New:
+  <a href="{% url 'create_asset' %}">Asset</a>
+  <a href="{% url 'create_make' %}">Make</a>
+  <a href="{% url 'create_model' %}">Model</a>
+  <a href="{% url 'create_location' %}">Location</a>
 </nav>
