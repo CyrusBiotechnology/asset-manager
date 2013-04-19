@@ -23,7 +23,7 @@ label {
     white-space: nowrap
 }
 
-span {
+.wrapper span {
     display: table-cell;
     padding: 0 0 0 5px
 }

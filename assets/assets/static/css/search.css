@@ -1,0 +1,25 @@
+.search-container {
+  display: inline-block;
+}
+
+.search-filter-template {
+  display: none !important;
+}
+
+.search-filter {
+  display: inline-block;
+  float: left;
+  clear: both;
+}
+
+.add-filter {
+  cursor: pointer;
+}
+
+.search-result div {
+  display: inline-block;
+}
+
+a {
+  text-decoration: none;
+}

@@ -1,7 +1,8 @@
 {% extends "base.html" %}
 
 {% block extra_head %}
-  <script src="/s/js/search.js"></script>
+  <script src="{{ STATIC_URL }}js/search.js"></script>
+  <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/search.css">
 {% endblock %}
 
 {% block header %}
