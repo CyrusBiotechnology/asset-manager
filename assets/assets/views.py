@@ -1,6 +1,7 @@
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.core import serializers
+from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseRedirect
 
 from assets.models import Asset
@@ -43,6 +44,44 @@ def index(request, model='asset'):
         context_instance=RequestContext(request))
 
 
+def list(request, model='asset', page=0):
+    template = 'list.html'
+    limit = 100
+    start = page * limit
+    model_instances = modelModels[model].objects.all()
+    model_instance = modelModels[model]()
+    model_fields = model_instance._meta.get_all_field_names()
+    forms = []
+
+    try:
+        request.REQUEST['ajax']
+        template = 'list-partial.html'
+    except KeyError:
+        pass
+
+    for field in model_fields:
+        try:
+            if request.REQUEST[field] == 'asc':
+                model_instances = model_instances.order_by('-' + field)
+            elif request.REQUEST[field] == 'desc':
+                model_instances = model_instances.order_by(field)
+        except KeyError:
+            continue
+
+    model_instances[start:limit]
+
+    for obj in model_instances:
+        forms.append(modelForms[model](instance=obj))
+
+    return render_to_response(
+        template,
+        {
+            'forms': forms,
+        },
+        context_instance=RequestContext(request)
+    )
+
+
 def ajax_search(request, model='asset'):
     model = modelModels['asset']
     model_instance = model()
@@ -52,7 +91,9 @@ def ajax_search(request, model='asset'):
 
     results = model.objects
     filter_counter = 0
+
     for field in model_fields:
+        #search_all_fields(results=results, field=field, filter_counter=filter_counter)
         try:
             kwargs = {
                 field + '__contains': request.REQUEST[field]
@@ -83,6 +124,36 @@ def ajax_search(request, model='asset'):
 
     return HttpResponse(data, mimetype="application/json")
 
+
+def import_model(request, model):
+    header = 'Importing ' + model + 's'
+    template = 'import/import.html'
+    sub_template = 'import/model.html'
+    model_form = modelForms[model]()
+
+    return render_to_response(
+        template,
+        {
+            'model': model,
+            'model_form': model_form,
+            'header': header,
+            'sub_template': sub_template,
+        },
+        context_instance=RequestContext(request)
+    )
+
+
+def import_index(request):
+    header = 'Please choose a model'
+    sub_template = 'import/index.html'
+    return render_to_response(
+        'import/import.html',
+        {
+            'models': modelModels,
+            'header': header,
+            'sub_template': sub_template,
+        },
+        context_instance=RequestContext(request))
 
 
 def create_object(request, model):
@@ -123,7 +194,7 @@ def display_object(request, ID, model):
     model_object = get_object_or_404(model_object, pk=ID)
     form = modelForms[model](instance=model_object)
 
-    qr_base64 = get_qrcode()
+    qr_base64 = get_qrcode(request)
 
     extra_style = ['object.css']
     extra_js = []
@@ -175,6 +246,23 @@ def edit_object(request, ID, model):
     )
 
 
+def search_all_fields(**kwargs):
+    try:
+        kwargs = {
+            field + '__contains': request.REQUEST[field]
+        }
+        results = results.filter(**kwargs).order_by('id')
+        filter_counter += 1
+    except TypeError:  # related field or something
+        raise TypeError
+    except KeyError:  # (not defined by the client)
+        raise KeyError
+    return {
+        'results': results,
+        'filter_counter': filter_counter,
+    }
+
+
 def check_model(model):
     try:
         modelModels[model]()
@@ -189,12 +277,15 @@ def check_form(model):
         return HttpResponseBadRequest()
 
 
-def get_qrcode():
+def get_qrcode(request):
     output = StringIO.StringIO()  # This is sort of like temp, but suaver
-    #qr_url = HOSTNAME + reverse('assets', kwargs={'aID': aID})
-    qr_url = ''
+    qr_url = request.META['HTTP_HOST'] + request.META['PATH_INFO']
     qr_url = qr_url.lower()
     img = qrcode.make(qr_url)
     img.save(output, 'gif')
     img = output.getvalue().encode('base64')
     return img
+
+
+def handler404(request):
+    template = '404page.html'

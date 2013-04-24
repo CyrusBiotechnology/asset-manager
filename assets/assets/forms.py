@@ -1,4 +1,4 @@
-from django.forms import ModelForm
+from django.forms import ModelForm, FileField
 from assets.models import Asset, Location, AssetMake, AssetModel
 
 '''
@@ -26,3 +26,14 @@ class MakeForm(ModelForm):
 class ModelForm(ModelForm):
     class Meta:
         model = AssetModel
+
+
+'''
+
+Generic file import form
+
+'''
+
+
+class ImportForm(forms.Form):
+    file_to_import = FileField()

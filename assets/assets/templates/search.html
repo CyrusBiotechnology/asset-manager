@@ -14,7 +14,7 @@
 
 <script id="search-result-template" type="text/html">
   <div class="search-result">
-    <a href="{% url 'asset_alias' %}{% templatetag openvariable %} pk {% templatetag closevariable %}">
+    <a href="{% url 'asset_list' %}{% templatetag openvariable %} pk {% templatetag closevariable %}">
       <div class="s-result-img">
         {% templatetag openvariable %} fields.title {% templatetag closevariable %}
       </div>

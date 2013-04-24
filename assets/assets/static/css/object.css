@@ -1,8 +1,5 @@
-.wrapper p {
-  display: inline-block;
-}
 
-.display-asset {
+.display-object {
   width: 90%;
   margin: 10px auto;
 }
@@ -16,4 +13,79 @@
   display: block;
   margin: 0 auto;
   text-align: center;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
+
+.asset-form {
+  width: 100%;
+  margin: 0 auto;
+}
+
+ul.errorlist {
+  background-color: #F99;
+  background-color: rgba(250,50,50,.7);
+}
+
+.errorlist li {
+  list-style: none;
+}
+
+.container,
+.display-object {
+  display: table;
+  width: 98%;
+  padding-left: 2%;
+  padding-right: 2%;
+  margin-left: -1%;
+}
+
+.container:first-child,
+.object-display:first-child {
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.container:nth-child(odd),
+.object-display:nth-child(odd) {
+  background-color: rgba(100,100,255,.04);
+}
+
+.container:nth-child(odd) input,
+.object-display:nth-child(odd) {
+  background-color: rgba(200,200,255,.1)
+}
+
+.object-display {
+  padding: 3px 12px;
+}
+
+label, .object-display-label {
+  display: table-cell;
+  white-space: nowrap;
+  width: 9em;
+}
+
+.wrapper span {
+  display: table-cell;
+  padding: 0 0 0 5px;
+}
+
+input {
+  width: 99.25%
+}
+
+.errors {
+  background-color: #F55 !important;
+}
+
+.submit-button {
+  display: block; 
+  margin: 3% auto; 
+  clear: both;
+}
+
+
+
+
+

@@ -1,6 +1,5 @@
 {% load get_class %}
 <form method="POST" class="asset-form" {% if form.is_multipart %}enctype="multipart/form-data"{% endif %}>
-  {% csrf_token %}
   {% for field in form %}
     {% if field.errors %}
     <ul class="errorlist">
@@ -11,5 +10,6 @@
     {% endif %}
     <div class="container">{{ field.label_tag }}<span class="form-field-container {{ field.field|klass }}">{{ field }}</span></div>
   {% endfor %}
-  <button>Submit</button>
+  {% csrf_token %}
+  <button class="submit-button">Submit</button>
 </form>

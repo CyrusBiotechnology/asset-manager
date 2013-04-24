@@ -1,6 +1,8 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 
+handler404 = 'assets.assets.views.handler404'
+
 
 from assets.views import *
 
@@ -8,7 +10,7 @@ admin.autodiscover()
 
 # Asset urls
 asset_patterns = patterns('assets.views',
-    url(r'^$', 'dummy', name='asset_alias'),
+    url(r'^$', 'list', {'model': 'asset'}, name='asset_list'),
     url(r'^new/?', 'create_object', {'model': 'asset'}, name='create_asset'),
     url(r'^(?P<ID>[0-9]+)/?$', 'display_object', {'model': 'asset'}, name='asset'),
     url(r'^(?P<ID>[0-9]+)/edit/?', 'edit_object', {'model': 'asset'}, name='edit_asset'),
@@ -38,6 +40,13 @@ model_patterns = patterns('assets.views',
     url(r'^(?P<ID>[0-9]+)/edit/?', 'edit_object', {'model': 'model'}, name='edit_model'),
 )
 
+# Import urls
+import_patterns = patterns('assets.views',
+    url(r'^$', 'import_index', name='import'),
+    url(r'^(?P<model>\w+)/?$', 'import_model', name='import_model'),
+)
+
+# Auth urls
 auth_patterns = patterns('django.contrib.auth.views',
     url(r'^login/', 'login', {'template_name': 'login.html'}),
     url(r'^logout/', 'logout', {'next_page': '/'}),
@@ -48,10 +57,12 @@ urlpatterns = patterns('',
     url(r'^$', 'assets.views.index', name='index'),
     url(r'^se', 'assets.views.ajax_search', name='ajax_search'),
 
-    url(r'^assets/', include(asset_patterns)),
+    url(r'^asset/', include(asset_patterns)),
     url(r'^make/', include(make_patterns)),
     url(r'^model/', include(model_patterns)),
     url(r'^location/', include(location_patterns)),
+
+    url(r'^import/', include(import_patterns)),
 
     url(r'^admin/', include(admin.site.urls)),
     url(r'^accounts/', include(auth_patterns))

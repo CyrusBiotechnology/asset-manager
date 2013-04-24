@@ -46,7 +46,7 @@ class Asset(models.Model):
 
 
 class AssetMake(models.Model):
-    make = models.CharField(max_length=100, blank=True, unique=True)
+    make = models.CharField(max_length=100, blank=False, null=False, unique=True)
 
     def __unicode__(self):
         return unicode(self.make)

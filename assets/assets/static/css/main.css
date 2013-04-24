@@ -29,14 +29,36 @@ body {
   padding: 10px 1%;
   border-radius: 10px;
   box-shadow: 0 0 10px 2px #DDD;
+  transition:
+    box-shadow .5s;
+}
+
+.wrapper:hover {
+  box-shadow: 0 0 11px 2px #CCC;
+  transition:
+    box-shadow .5s;
+}
+
+.wrapper:last-child {
+  margin-bottom: 15%;
+}
+
+.wrapper:first-child {
+  margin-top: 3%;
 }
 
 .menu {
   display: inline-block;
   margin-left: 10px;
+  color: #999;
+}
+
+a {
+  text-decoration: none;
 }
 
 .menu a {
+  color:#444;
   text-decoration: none;
   display: inline-block;
   list-style: none;
@@ -45,17 +67,19 @@ body {
   background-color: rgb(250,200,250);
   background-color: rgba(250,200,250,.1);
   border-radius: 5px;
-  box-shadow: 0 0 5px 1px rgba(100,100,100,.4);
+  box-shadow: 0 0 4px 1px rgba(100,100,100,.2);
+  transition:
+    box-shadow .5s;
 }
 
 .menu a:hover {
-  color:#FF00FF;
-  box-shadow: 0 0 6px 1px rgba(80,80,80,.9);
+  color:#990099;
+  box-shadow: 0 0 5px 1px rgba(80,80,80,.4);
   background-color: rgb(255,210,255);
   background-color: rgba(240,230,240,.1);
   transition: 
-    box-shadow .6s,
-    background-color .6s;
+    box-shadow .3s,
+    background-color .3s;
 }
 
 .menu a + a {
@@ -76,7 +100,33 @@ body {
     line-height:0;
 }
 
+.wrapper:first-child h1 {
+  margin: 15px auto;
+  width: 90%;
+  color: #F17777;
+  text-align: center;
+  padding: 9px 0;
+  border-top: 1px solid rgba(100,100,100,.5);
+  border-bottom: 1px solid rgba(100,100,100,.5);
+  box-shadow:0 0 10px rgba(0,0,0,0.5);
+  position:relative;
+}
 
+.wrapper:first-child h1:before,
+.wrapper:first-child h1:after {
+  position:absolute;
+  width:10px;
+  top:0;
+  bottom:0;
+  background:#fff;
+  content:" ";
+}
+.wrapper:first-child h1:before {left:-10px;}
+.wrapper:first-child h1:after{right:-10px;}
+
+.required {
+  color: #D00;
+}
 
 
 

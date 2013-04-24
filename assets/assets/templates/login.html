@@ -24,35 +24,21 @@
     border-radius: 20px;
     padding: 30px;
     margin: 20px auto;
+    transition:
+      box-shadow .3s;
   }
 
-  .login-title {
-    color: #F17777;
-    text-align: center;
-    padding: 9px 0;
-    border-top: 1px solid rgba(100,100,100,.5);
-    border-bottom: 1px solid rgba(100,100,100,.5);
-    box-shadow:0 0 10px rgba(0,0,0,0.5);
-    position:relative;
+  form:hover {
+    box-shadow: 0 0 10px rgba(170,170,170,.5);
+    transition:
+      box-shadow .3s;
   }
-
-  .login-title:before,
-  .login-title:after {
-    position:absolute;
-    width:10px;
-    top:0;
-    bottom:0;
-    background:#fff;
-    content:"";
-  }
-  .login-title:before {left:-10px;}
-  .login-title:after{right:-10px;}
 
 </style>
 {% endblock %}
 
 {% block header %}
-<h2 class="login-title">LOGIN REQUIRED</h2>
+<h1 class="login-title">LOGIN REQUIRED</h1>
 {% endblock %}
 
 {% block content %}
