@@ -1,0 +1,4 @@
+<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+  <polygon points="20,0, 10,20 0,0" id="down_arrow" style="fill: grey;"/>
+  <polygon points="0,20 10,0 20,20" id="up_arrow" style="fill: grey;"/>
+</svg>

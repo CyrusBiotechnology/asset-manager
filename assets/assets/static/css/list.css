@@ -1,0 +1,21 @@
+td {
+  padding: 7px;
+  border: 1px solid #000;
+}
+
+.sort svg {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  z-index: 1;
+}
+
+.sort a {
+  display: inline-block;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.sort td {
+  position: relative;
+}

@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block extra_head %}
+  <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/list.css">
+  {#<script src="{{ STATIC_URL }}js/list.js"></script>
+  <link href="{{ STATIC_URL }}css/jquery.loadmask.css" rel="stylesheet" type="text/css" />
+  <script src="{{ STATIC_URL }}js/jquery.loadmask.min.js"></script>
+  <script type="text/javascript">
+  $(function(){
+    window.sort_url = "{% url 'asset_list' %}";
+  });
+  </script>#}
+{% endblock %}
+
+{% block header %}
+  {% include "header-links.html" %}
+{% endblock %}
+
+{% block content %}
+<table class="object-list">
+  <tbody>
+  {% for form in forms %}
+
+    {% if forloop.first %}
+    <tr class="sort">
+      {% for field in form %}
+      <td style="z-index: 100;">
+        <a href="{% if field.sort %}?{{ field.name }}={{ field.sort }}" title="Sort by {{ field.label }}" value="{{ field.name }}" style="z-index: 3;">
+          {{ field.label }}
+        </a>
+        {#<svg width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="20,0, 10,20 0,0" class="down_arrow" style="fill: rgba(100,100,100,.4);"/>
+          <polygon points="0,20 10,0 20,20" class="up_arrow" style="fill: rgba(100,100,100,.4);"/>
+        </svg>#}
+      </td>
+      {% endfor %}
+    </tr>
+    {% endif %}
+
+    <tr>
+
+    {% for field in form %}
+      <td>
+        {{ field.value }}
+      </td>
+    {% endfor %}
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}

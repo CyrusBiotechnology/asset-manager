@@ -1,0 +1,7 @@
+<h2> Please upload a csv document with the following fields: </h2>
+<h3> Required fields are marked (*) </h3>
+<ul>
+{% for field in model_form %}
+  <li class="{% if field.field.required %}required{% endif %}">{{ field.name }}{% if field.field.required %}*{% endif %}</li>
+{% endfor %}
+</p>

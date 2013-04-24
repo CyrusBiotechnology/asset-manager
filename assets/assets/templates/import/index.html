@@ -1,0 +1,5 @@
+<ul>
+{% for model in models %}
+  <a href="{% url 'import_model' model=model %}"><li>{{ model }}</li></a>
+{% endfor %}
+</ul>
