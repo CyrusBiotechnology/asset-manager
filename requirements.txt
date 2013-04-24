@@ -3,4 +3,3 @@ PIL==1.1.7
 django-stronghold==0.2.1
 qrcode==2.7
 wsgiref==0.1.2
-
