@@ -32,8 +32,9 @@ class ModelForm(ModelForm):
 
 Generic file import form
 
-'''
+
 
 
 class ImportForm(forms.Form):
     file_to_import = FileField()
+'''
