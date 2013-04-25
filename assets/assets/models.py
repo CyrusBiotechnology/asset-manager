@@ -1,6 +1,15 @@
 from django.contrib.auth.models import User
 from django.db import models
 
+from settings import MEDIA_ROOT
+
+import time
+
+
+def import_folder(blah, whatever):
+    timestr = str(time.time()).replace('.', '')
+    return MEDIA_ROOT + 'csv-import/' + timestr + '.csv'
+
 
 class Asset(models.Model):
     STATUS_CHOICES = (
@@ -97,3 +106,10 @@ class AssetType(models.Model):
 
     def __unicode__(self):
         return unicode(self.type_name)
+
+
+class ImportFile(models.Model):
+    uploaded = models.FileField(upload_to=import_folder)
+
+    def __unicode__(self):
+        return unicode(self.uploaded)

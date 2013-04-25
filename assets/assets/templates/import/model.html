@@ -4,4 +4,18 @@
 {% for field in model_form %}
   <li class="{% if field.field.required %}required{% endif %}">{{ field.name }}{% if field.field.required %}*{% endif %}</li>
 {% endfor %}
-</p>
+<form enctype="multipart/form-data" method="post" style="margin: 50px 0; text-align: center;">
+  {% csrf_token %}
+  {% for field in upload_form %}
+    {% if field.errors%}
+    <ul>
+      {% for error in field.errors %}
+      <li>{{ error }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    {{ field }}
+  {% endfor %}
+  <br>
+  <input type="submit" value="submit" class="clear">
+</form>

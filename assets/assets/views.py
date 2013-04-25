@@ -6,6 +6,8 @@ from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseRedire
 
 from assets.models import Asset
 from assets.forms import *
+import csv
+
 
 # Third party libraries
 import qrcode
@@ -130,12 +132,22 @@ def import_model(request, model):
     template = 'import/import.html'
     sub_template = 'import/model.html'
     model_form = modelForms[model]()
+    upload_form = ImportFileForm()
+
+    print request.FILES
+
+    if request.method == 'POST':
+        upload_form = ImportFileForm(request.POST, request.FILES)
+        upload_form.is_valid()
+        upload = ImportFile(**upload_form.cleaned_data)
+        upload.save()
 
     return render_to_response(
         template,
         {
             'model': model,
             'model_form': model_form,
+            'upload_form': upload_form,
             'header': header,
             'sub_template': sub_template,
         },

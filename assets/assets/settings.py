@@ -108,6 +108,6 @@ STRONGHOLD_PUBLIC_URLS = (
 )
 
 try:
-    from settings_local import *
+    from local_settings import *
 except ImportError, exp:
     pass

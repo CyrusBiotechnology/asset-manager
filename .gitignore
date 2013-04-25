@@ -1,5 +1,6 @@
 env/*
 *.pyc
 *settings_local*
+*local_settings*
 *.db
 

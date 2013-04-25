@@ -1,5 +1,5 @@
-from django.forms import ModelForm, FileField
-from assets.models import Asset, Location, AssetMake, AssetModel
+from django.forms import ModelForm
+from assets.models import *
 
 '''
 
@@ -28,13 +28,6 @@ class ModelForm(ModelForm):
         model = AssetModel
 
 
-'''
-
-Generic file import form
-
-
-
-
-class ImportForm(forms.Form):
-    file_to_import = FileField()
-'''
+class ImportFileForm(ModelForm):
+    class Meta:
+        model = ImportFile
