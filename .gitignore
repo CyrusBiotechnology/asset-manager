@@ -3,4 +3,5 @@ env/*
 *settings_local*
 *local_settings*
 *.db
+*.DS_Store*
 

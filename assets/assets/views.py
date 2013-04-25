@@ -133,14 +133,18 @@ def import_model(request, model):
     sub_template = 'import/model.html'
     model_form = modelForms[model]()
     upload_form = ImportFileForm()
-
-    print request.FILES
+    upload = ImportFile()
 
     if request.method == 'POST':
         upload_form = ImportFileForm(request.POST, request.FILES)
         upload_form.is_valid()
         upload = ImportFile(**upload_form.cleaned_data)
         upload.save()
+
+    with open(upload.uploaded.name, 'rb') as csvfile:
+        spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
+        for row in spamreader:
+            print ', '.join(row)
 
     return render_to_response(
         template,
