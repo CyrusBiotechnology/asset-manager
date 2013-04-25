@@ -4,7 +4,7 @@
     <input class="filter" type="text">
     <select class="field-select">
       {% for field in model_fields %}
-        <option value="{{ field }}">{{ field }}</option>
+        <option value="{{ field }}" {% if field == 'description' %}selected="selected"{% endif %}>{{ field }}</option>
       {% endfor %}
     </select>
   </div>

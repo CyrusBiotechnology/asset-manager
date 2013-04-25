@@ -35,6 +35,11 @@
   }
 
 </style>
+<script type="text/javascript">
+$(function(){
+  $('#id_username').focus();
+})
+</script>
 {% endblock %}
 
 {% block header %}
@@ -51,8 +56,6 @@
   {% csrf_token %}
     {% for field in form %}
       {{ field }}
-      {% if field.errors %}
-      {% endif %}
     {% endfor %}
     <br>
     <input type="hidden" name="next" value="{{ next }}" />
