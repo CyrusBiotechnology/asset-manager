@@ -30,5 +30,23 @@ Getting Started
         MEDIA_ROOT = '/path/to/a/directory/'  # this must be writeable
 
 
+*   enter the python virtual enviornment:
 
-*   
+        source ./env/bin/activate
+
+
+*   sync the database:
+        
+        ./assets/manage.py syncdb
+
+[follow prompts]
+
+
+*   run a server:
+
+        ./assets/manage.py runserver 2000  
+
+
+*   view the application:
+
+        http://localhost:2000/
