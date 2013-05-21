@@ -39,7 +39,7 @@ Getting Started
         
         ./assets/manage.py syncdb
 
-[follow prompts]
+    [follow prompts]
 
 
 *   run a server:
