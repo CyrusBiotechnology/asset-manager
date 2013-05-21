@@ -15,12 +15,11 @@ Getting Started
         $ setup.sh
 
 *    create an assets/assets/local_settings.py file, you'll need to define three parameters here:
-        
 
         DATABASES = {
             'default': {
                 'ENGINE': 'django.db.backends.sqlite3',
-                'NAME': '/var/db/pnovotnak/assets.db'
+                'NAME': '/path/to/database/file.db'
             }
         }
 
@@ -28,6 +27,8 @@ Getting Started
 
         STATIC_URL = '/s/'
 
-        MEDIA_ROOT = '/Users/pnovotnak/Documents/asset-manager/assets/media/'
+        MEDIA_ROOT = '/path/to/a/directory/'  # this must be writeable
 
 
+
+*   
