@@ -1,0 +1,16 @@
+<table style="margin: 0 auto;">
+  <tbody>
+    <tr class="import-results-header">
+    {% for header in headers %}
+      <td>{{ header }}</td>
+    {% endfor %}
+    </tr>
+    {% for form in objects_inserted_forms %}
+    <tr>
+    {% for field in form %}
+      <td>{{ field.value }}</td>
+    {% endfor %}
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>

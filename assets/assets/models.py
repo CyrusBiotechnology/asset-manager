@@ -4,6 +4,7 @@ from django.db import models
 from settings import MEDIA_ROOT
 
 import time
+import datetime
 
 
 def import_folder(blah, whatever):
@@ -23,7 +24,7 @@ class Asset(models.Model):
             ('Capital', 'capital'),
         )
     #Location    Serial Number
-    acquisition_date = models.DateField()
+    acquisition_date = models.DateField(default=datetime.date.today)
     description = models.TextField(max_length=2000)
     acquisition_value = models.CharField(max_length=1000)
     serial_number = models.CharField(max_length=200, blank=True, )
@@ -48,7 +49,7 @@ class Asset(models.Model):
         return AssetCheckout(asset=self.pk)
 
     def __unicode__(self):
-        return unicode(self.id)
+        return unicode(str(self.make) + ' ' + str(self.model) + ' (' + str(self.model.model_type) + ') - ' + str(self.id))
 
     def get_fields(self):
         return [(field.name, field.value_to_string(self)) for field in Asset._meta.fields]
@@ -113,3 +114,12 @@ class ImportFile(models.Model):
 
     def __unicode__(self):
         return unicode(self.uploaded)
+
+
+modelModels = {
+    'asset': Asset,
+    'location': Location,
+    'make': AssetMake,
+    'model': AssetModel,
+    'checkout': AssetCheckout,
+}

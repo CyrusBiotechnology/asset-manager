@@ -1,0 +1,23 @@
+table {
+  text-align: center;
+}
+
+tr:first-child td {
+  color: #F33;
+}
+
+td {
+  border-top: 1px solid #000;
+}
+
+tr:last-child td {
+  border-bottom: 1px solid #000;
+}
+
+td {
+  padding: 8px;
+}
+
+td:only-child {
+  padding: 8px 30px;
+}

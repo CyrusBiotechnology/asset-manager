@@ -4,31 +4,15 @@ from django.core import serializers
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseRedirect
 
-from assets.models import Asset
+from assets.models import *
 from assets.forms import *
-import csv
-
+from csv_import import *
 
 # Third party libraries
 import qrcode
 
 # Builtins
 import StringIO
-
-modelModels = {
-    'asset': Asset,
-    'location': Location,
-    'make': AssetMake,
-    'model': AssetModel,
-}
-
-
-modelForms = {
-    'asset': AssetForm,
-    'location': LocationForm,
-    'make': MakeForm,
-    'model': ModelForm,
-}
 
 
 def dummy(request):
@@ -128,23 +112,32 @@ def ajax_search(request, model='asset'):
 
 
 def import_model(request, model):
-    header = 'Importing ' + model + 's'
+    title = 'Importing ' + model + 's'
     template = 'import/import.html'
     sub_template = 'import/model.html'
     model_form = modelForms[model]()
     upload_form = ImportFileForm()
-    upload = ImportFile()
+    fields_not_found = []
+    objects_inserted_forms = []
+    headers = []
 
     if request.method == 'POST':
         upload_form = ImportFileForm(request.POST, request.FILES)
         upload_form.is_valid()
         upload = ImportFile(**upload_form.cleaned_data)
         upload.save()
-
-    with open(upload.uploaded.name, 'rb') as csvfile:
-        spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
-        for row in spamreader:
-            print ', '.join(row)
+        csv_import_output = csv_import(request, upload.uploaded.name, model)
+        if csv_import_output['returns'] == 1:
+            fields_not_found = csv_import_output['fields_not_found']
+            upload.uploaded.delete()
+            upload.delete()
+        else:
+            sub_template = 'import/imported.html'
+            title = 'Imported ' + model + 's'
+            objects_inserted = csv_import_output['objects_inserted']
+            headers = csv_import_output['headers']
+            for obj in objects_inserted:
+                objects_inserted_forms.append(modelForms[model](instance=obj))
 
     return render_to_response(
         template,
@@ -152,21 +145,24 @@ def import_model(request, model):
             'model': model,
             'model_form': model_form,
             'upload_form': upload_form,
-            'header': header,
+            'title': title,
+            'headers': headers,
+            'fields_not_found': fields_not_found,
             'sub_template': sub_template,
+            'objects_inserted_forms': objects_inserted_forms,
         },
         context_instance=RequestContext(request)
     )
 
 
 def import_index(request):
-    header = 'Please choose a model'
+    title = 'Please choose a model'
     sub_template = 'import/index.html'
     return render_to_response(
         'import/import.html',
         {
             'models': modelModels,
-            'header': header,
+            'title': title,
             'sub_template': sub_template,
         },
         context_instance=RequestContext(request))

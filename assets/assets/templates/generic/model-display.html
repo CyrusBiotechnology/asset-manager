@@ -6,5 +6,8 @@
   {% endfor %}
   {% csrf_token %}
   <a class="editlink" href="{% url model id %}/edit">Edit this {{ model }}</a>
+  {% for link in extralinks %}
+  <a class="{{ link.class }}" href="{{ link.href }}">{{ link.text }}</a>
+  {% endfor %}
   <img class="asset-qr" title="Link to this {{ model }} ({{ qr_url }})" src="data:image/gif;base64,{{ qr }}" />
 </div>

@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 
+
 handler404 = 'assets.assets.views.handler404'
 
 
@@ -40,6 +41,11 @@ model_patterns = patterns('assets.views',
     url(r'^(?P<ID>[0-9]+)/edit/?', 'edit_object', {'model': 'model'}, name='edit_model'),
 )
 
+checkout_patterns = patterns('assets.views',
+    url(r'^$', 'dummy', name='checkout_alias'),
+    url(r'^new/?', 'create_object', {'model': 'checkout'}, name='checkout')
+)
+
 # Import urls
 import_patterns = patterns('assets.views',
     url(r'^$', 'import_index', name='import'),
@@ -61,9 +67,11 @@ urlpatterns = patterns('',
     url(r'^make/', include(make_patterns)),
     url(r'^model/', include(model_patterns)),
     url(r'^location/', include(location_patterns)),
+    url(r'^checkout/', include(checkout_patterns)),
 
     url(r'^import/', include(import_patterns)),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^accounts/', include(auth_patterns))
+    url(r'^accounts/', include(auth_patterns)),
+    url(r'^grappelli/', include('grappelli.urls')),
 )

@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
 
+{% block extra_head %}
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/import.css">
+{% endblock %}
+
 {% block header %}
-<h1>{{ header|title }}</h1>
+<h1>{{ title|title }}</h1>
 {% endblock %}
 
 {% block content %}

@@ -1,6 +1,7 @@
 from django.forms import ModelForm
 from assets.models import *
 
+
 '''
 
 Model forms. Keep 'em generic!
@@ -28,6 +29,20 @@ class ModelForm(ModelForm):
         model = AssetModel
 
 
+class CheckoutForm(ModelForm):
+    class Meta:
+        model = AssetCheckout
+
+
 class ImportFileForm(ModelForm):
     class Meta:
         model = ImportFile
+
+
+modelForms = {
+    'asset': AssetForm,
+    'location': LocationForm,
+    'make': MakeForm,
+    'model': ModelForm,
+    'checkout': CheckoutForm,
+}
