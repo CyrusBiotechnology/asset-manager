@@ -24,7 +24,7 @@ Getting Started
             }
         }
 
-        SECRET_KEY = ''  # https://docs.djangoproject.com/en/dev/ref/settings/#s-secret-key
+        SECRET_KEY = ''  #  https://docs.djangoproject.com/en/dev/ref/settings/#s-secret-key
 
         STATIC_URL = '/s/'
 
