@@ -19,7 +19,7 @@ source env/bin/activate
 # Install requirements
 pip install --use-mirrors --download-cache ~/.pip-cache/ -r requirements.txt
 
-if [ !-a  $local_settings ]; then
+if [ ! -f  $local_settings ]; then
   echo "
 
 DATABASES = {
