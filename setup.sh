@@ -21,7 +21,6 @@ pip install --use-mirrors --download-cache ~/.pip-cache/ -r requirements.txt
 
 if [ ! -f  $local_settings ]; then
   echo "
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
