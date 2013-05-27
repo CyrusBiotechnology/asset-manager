@@ -21,25 +21,24 @@ pip install --use-mirrors --download-cache ~/.pip-cache/ -r requirements.txt
 
 if [ !-a  $local_settings ]; do
   echo "
-{
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': '$DIR/assets.db'
-        }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': '$DIR/assets.db',
     }
-
-    SECRET_KEY = '$secret_key'
-
-    STATIC_ROOT = '$DIR/static/'
-
-    STATIC_URL = '/s/'
-
-    MEDIA_ROOT = '$DIR/media/'
-
-    MEDIA_URL = '/m/'
-
 }
+
+SECRET_KEY = '$secret_key'
+
+STATIC_ROOT = '$DIR/static/'
+
+STATIC_URL = '/s/'
+
+MEDIA_ROOT = '$DIR/media/'
+
+MEDIA_URL = '/m/'
+
 
 " > $local_settings
 fi
