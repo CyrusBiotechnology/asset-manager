@@ -9,7 +9,7 @@ Asset Manager
 Getting Started
 ---------------
 
-*   check out the repository and run:
+*   check out the repository, enter it and run:
 
         $ setup.sh
 

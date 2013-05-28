@@ -82,8 +82,8 @@ class AssetModel(models.Model):
 class AssetCheckout(models.Model):
     user = models.ForeignKey(User, related_name="")
     asset = models.ForeignKey("Asset", related_name="")
-    out_date = models.DateTimeField()
-    in_date = models.DateTimeField(blank=True, null=True)
+    out_date = models.DateField()
+    in_date = models.DateField(blank=True, null=True)
     description = models.TextField(max_length=1000)
 
     def __unicode__(self):

@@ -173,7 +173,17 @@ def create_object(request, model):
     check_form(model)
 
     object_template = 'generic/model-form.html'
-    form = modelForms[model]()
+
+    if model == 'checkout':
+        try:
+            asset = request.REQUEST['asset']
+            form = modelForms[model](initial={
+                'asset': asset
+            })
+        except:
+            form = modelForms[model]()
+    else:
+        form = modelForms[model]()
 
     if request.method == 'POST':
         form = modelForms[model](request.POST)

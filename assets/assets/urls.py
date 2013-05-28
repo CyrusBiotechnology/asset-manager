@@ -41,9 +41,11 @@ model_patterns = patterns('assets.views',
     url(r'^(?P<ID>[0-9]+)/edit/?', 'edit_object', {'model': 'model'}, name='edit_model'),
 )
 
+# Checkout patterns
 checkout_patterns = patterns('assets.views',
-    url(r'^$', 'dummy', name='checkout_alias'),
-    url(r'^new/?', 'create_object', {'model': 'checkout'}, name='checkout')
+    url(r'^$', 'list', {'model': 'checkout'}, name='checkout_list'),
+    url(r'^new/?', 'create_object', {'model': 'checkout'}, name='create_checkout'),
+    url(r'^(?P<ID>[0-9]+)/?$', 'display_object', {'model': 'checkout'}, name='checkout'),
 )
 
 # Import urls

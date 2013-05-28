@@ -21,6 +21,7 @@ pip install --use-mirrors --download-cache ~/.pip-cache/ -r requirements.txt
 
 if [ ! -f  $local_settings ]; then
   echo "
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -37,7 +38,6 @@ STATIC_URL = '/s/'
 MEDIA_ROOT = '$DIR/media/'
 
 MEDIA_URL = '/m/'
-
 
 " > $local_settings
 fi

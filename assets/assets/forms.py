@@ -32,6 +32,13 @@ class ModelForm(ModelForm):
 class CheckoutForm(ModelForm):
     class Meta:
         model = AssetCheckout
+        exclude = ('in_date')
+
+
+class CheckinForm(ModelForm):
+    class Meta:
+        model = AssetCheckout
+        fields = ('in_date',)
 
 
 class ImportFileForm(ModelForm):
