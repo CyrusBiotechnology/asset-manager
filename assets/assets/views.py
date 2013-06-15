@@ -3,6 +3,7 @@ from django.template import RequestContext
 from django.core import serializers
 from django.core.urlresolvers import reverse
 from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseRedirect
+import logging
 
 from assets.models import *
 from assets.forms import *
@@ -13,6 +14,8 @@ import qrcode
 
 # Builtins
 import StringIO
+
+logger = logging.getLogger(__name__)
 
 
 def dummy(request):
@@ -73,7 +76,7 @@ def ajax_search(request, model='asset'):
     model_instance = model()
     model_fields = model_instance._meta.get_all_field_names()
 
-    num_results = 0
+    #num_results = 0
 
     results = model.objects
     filter_counter = 0
@@ -87,9 +90,9 @@ def ajax_search(request, model='asset'):
             results = results.filter(**kwargs).order_by('id')
             filter_counter += 1
         except TypeError:  # related field or something
-            pass
+            logger.error('ajax_search model fields TypeError')
         except KeyError:  # (not defined by the client)
-            pass
+            logger.error('ajax_search model fields KeyError')
 
     if filter_counter == 0:
         results = model.objects.all()
@@ -99,7 +102,7 @@ def ajax_search(request, model='asset'):
     except TypeError:
         results = results.all()[:100]
 
-    num_results = model.objects.count()
+    #num_results = model.objects.count()
 
     try:
         data = serializers.serialize('json', results)
