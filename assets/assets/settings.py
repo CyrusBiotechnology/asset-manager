@@ -60,7 +60,6 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_extensions',
     'grappelli',
     'django.contrib.admin',
     'assets',
