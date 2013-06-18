@@ -17,6 +17,8 @@ echo 'Activating virtual environment'
 source env/bin/activate
 
 # Install requirements
+echo 'Installing requirements (May require authentication!)'
+sudo apt-get install python-setuptools python-dev libjpeg62 libjpeg8-dev libfreetype6 libfreetype6-dev zlib1g-dev
 pip install --use-mirrors --download-cache ~/.pip-cache/ -r requirements.txt
 
 if [ ! -f  $local_settings ]; then
@@ -41,3 +43,9 @@ MEDIA_URL = '/m/'
 
 " > $local_settings
 fi
+
+echo 'Syncing the database ...'
+./assets/manage.py syncdb
+
+echo 'Running the server ...'
+./assets/manage.py runserver 2000
