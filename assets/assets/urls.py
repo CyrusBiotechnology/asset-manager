@@ -20,7 +20,6 @@ asset_patterns = patterns('assets.views',
 # Location urls
 location_patterns = patterns('assets.views',
     url(r'^new/?', 'create_object', {'model': 'location'}, name='create_location'),
-    url(r'^new/?', 'create_object', {'model': 'location'}, name='create_location'),
     url(r'^(?P<ID>[0-9]+)/?$', 'display_object', {'model': 'location'}, name='location'),
     url(r'^(?P<ID>[0-9]+)/edit/?', 'edit_object', {'model': 'location'}, name='edit_location'),
 )
