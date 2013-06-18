@@ -1,7 +1,7 @@
 env/*
 *.pyc
-settings_local.py
-local_settings.py
 *.db
 *.DS_Store*
+local_settings.py
+settings_local.py
 secret.txt
