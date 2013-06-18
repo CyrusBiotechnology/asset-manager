@@ -19,7 +19,7 @@ MEDIA_ROOT = os.path.join(PROJECT_ROOT, 'media/')
 MEDIA_URL = '/m/'
 
 
-"""
+""" https://gist.github.com/ndarville/3452907
 Two things are wrong with Django's default `SECRET_KEY` system:
 
 1. It is not random but pseudo-random
