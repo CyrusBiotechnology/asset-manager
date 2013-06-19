@@ -11,6 +11,10 @@
   <a href="{% url 'create_make' %}">Make</a>
   <a href="{% url 'create_model' %}">Model</a>
   <a href="{% url 'create_location' %}">Location</a>
-  &middot;
-  <a href="{% url 'import' %}">Import</a>
+  {% if request.path %}
+    {% if request.path != '/import/' %}
+	  &middot;
+      <a href="{% url 'import' %}">Import</a>
+    {% endif %}
+  {% endif %}
 </nav>
