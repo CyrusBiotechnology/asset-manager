@@ -4,11 +4,8 @@
 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/import.css">
 {% endblock %}
 
-{% block header-links %}
-  {% include "header-links.html" %}
-{% endblock %}
-
 {% block header %}
+{% include "header-links.html" %}
 <h1>{{ title|title }}</h1>
 {% endblock %}
 
