@@ -211,7 +211,7 @@ def create_object(request, model):
 
 
 def display_object(request, ID, model):
-
+    title = model
     check_model(model)
 
     object_template = 'generic/model-display.html'
@@ -227,6 +227,7 @@ def display_object(request, ID, model):
     return render_to_response(
         'generic/model.html',
         {
+		    'title': title,
             'id': ID,
             'qr': qr_base64,
             'qr_url': '',
@@ -241,7 +242,7 @@ def display_object(request, ID, model):
 
 
 def edit_object(request, ID, model):
-
+    title = 'edit' + model
     check_model(model)
     object_template = 'generic/model-form.html'
     model_object = modelModels[model]
@@ -259,6 +260,7 @@ def edit_object(request, ID, model):
     return render_to_response(
         'generic/model.html',
         {
+		    'title': title,
             'id': ID,
             'form': form,
             'model': model,

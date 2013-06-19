@@ -7,11 +7,26 @@
     {% endif %}
   {% endif %}
   New:
-  <a href="{% url 'create_asset' %}">Asset</a>
-  <a href="{% url 'create_make' %}">Make</a>
-  <a href="{% url 'create_model' %}">Model</a>
-  <a href="{% url 'create_location' %}">Location</a>
-  {# breadcrumbs #}
+  {% if request.path %}
+    {% if request.path != '/asset/new' %}	
+      <a href="{% url 'create_asset' %}">Asset</a>
+	{% endif %}
+  {% endif %}
+  {% if request.path %}
+    {% if request.path != '/make/new' %}	  
+      <a href="{% url 'create_make' %}">Make</a>
+	{% endif %}
+  {% endif %}
+  {% if request.path %}
+    {% if request.path != '/model/new' %}
+      <a href="{% url 'create_model' %}">Model</a>
+	{% endif %}
+  {% endif %}
+  {% if request.path %}
+    {% if request.path != '/location/new' %}	  
+      <a href="{% url 'create_location' %}">Location</a>
+    {% endif %}
+  {% endif %}
   {% if request.path %}
     {% if request.path != '/import/' %}
 	  &middot;
