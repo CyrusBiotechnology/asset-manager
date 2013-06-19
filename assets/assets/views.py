@@ -158,7 +158,7 @@ def import_model(request, model):
 
 
 def import_index(request):
-    title = 'Please choose a model'
+    title = 'Please choose a category to import'
     sub_template = 'import/index.html'
     return render_to_response(
         'import/import.html',
