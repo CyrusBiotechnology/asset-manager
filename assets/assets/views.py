@@ -196,7 +196,6 @@ def create_object(request, model):
     return render_to_response(
         'generic/model.html',
         {
-			'title': title,
             'form': form,
             'model': model,
             'extra_js': extra_js,
