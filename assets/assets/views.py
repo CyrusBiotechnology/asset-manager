@@ -176,7 +176,7 @@ def create_object(request, model):
 	
 	object_template = 'generic/model-form.html'
 	
-    if model == 'checkout':
+	if model == 'checkout':
         try:
             asset = request.REQUEST['asset']
             form = modelForms[model](initial={
