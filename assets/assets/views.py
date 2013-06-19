@@ -171,7 +171,7 @@ def import_index(request):
 
 
 def create_object(request, model):
-    title = 'Create'
+    title = 'Create', model
     check_form(model)
 
     object_template = 'generic/model-form.html'
