@@ -19,7 +19,10 @@ source env/bin/activate
 # Install requirements
 echo 'Installing requirements (May require authentication!)'
 sudo apt-get install python-setuptools python-dev libjpeg62 libjpeg8-dev libfreetype6 libfreetype6-dev zlib1g-dev
-pip install --use-mirrors --download-cache ~/.pip-cache/ -r requirements.txt
+curl -O https://raw.github.com/pypa/pip/master/contrib/get-pip.py
+sudo python get-pip.py
+sudo pip install --use-mirrors --download-cache ~/.pip-cache/ -r requirements.txt
+rm get-pip.py
 
 if [ ! -f  $local_settings ]; then
   echo "
