@@ -173,7 +173,6 @@ def import_index(request):
 def create_object(request, model):
 	check_form(model)
 	object_template = 'generic/model-form.html'
-	title = 'Create'
     if model == 'checkout':
         try:
             asset = request.REQUEST['asset']
