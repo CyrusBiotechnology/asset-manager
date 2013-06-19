@@ -8,14 +8,19 @@
   {% endif %}
   New:
   {% if request.path %}
+    {% if request.path != '/checkout/new' %}	
+      <a href="{% url 'create_checkout' %}">Checkout</a>
+	{% endif %}
+  {% endif %}
+  {% if request.path %}
     {% if request.path != '/asset/new' %}	
       <a href="{% url 'create_asset' %}">Asset</a>
 	{% endif %}
   {% endif %}
   {% if request.path %}
-    {% if request.path != '/make/new' %}	  
-      <a href="{% url 'create_make' %}">Make</a>
-	{% endif %}
+    {% if request.path != '/location/new' %}	  
+      <a href="{% url 'create_location' %}">Location</a>
+    {% endif %}
   {% endif %}
   {% if request.path %}
     {% if request.path != '/model/new' %}
@@ -23,9 +28,9 @@
 	{% endif %}
   {% endif %}
   {% if request.path %}
-    {% if request.path != '/location/new' %}	  
-      <a href="{% url 'create_location' %}">Location</a>
-    {% endif %}
+    {% if request.path != '/make/new' %}	  
+      <a href="{% url 'create_make' %}">Make</a>
+	{% endif %}
   {% endif %}
   {% if request.path %}
     {% if request.path != '/import/' %}
