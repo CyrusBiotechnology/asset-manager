@@ -47,8 +47,4 @@ MEDIA_URL = '/m/'
 " > $local_settings
 fi
 
-echo 'Syncing the database ...'
-./assets/manage.py syncdb
-
-echo 'Running the server ...'
-./assets/manage.py runserver 2000
+echo 'Congrats! You may now run ./start.sh at any time to start the server'
