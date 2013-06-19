@@ -173,7 +173,7 @@ def import_index(request):
 def create_object(request, model):
 
     check_form(model)
-	title = 'Create New ' model
+	title = 'Create New'
     object_template = 'generic/model-form.html'
 
     if model == 'checkout':
@@ -242,7 +242,7 @@ def display_object(request, ID, model):
 def edit_object(request, ID, model):
 
     check_model(model)
-	title = 'Edit ' ID
+	title = 'Edit'
     object_template = 'generic/model-form.html'
     model_object = modelModels[model]
     model_object = get_object_or_404(model_object, pk=ID)
