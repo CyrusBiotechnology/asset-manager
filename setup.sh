@@ -47,4 +47,4 @@ MEDIA_URL = '/m/'
 " > $local_settings
 fi
 
-echo 'Congrats! You may now run ./start.sh at any time to start the server'
+echo 'If there were no errors in setup you may now run ./start.sh to start the server.'
