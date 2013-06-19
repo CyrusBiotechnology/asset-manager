@@ -1,4 +1,7 @@
 <ul>
+{% block header %}
+  {% include "header-links.html" %}
+{% endblock %}
 {% for model in models %}
   <a href="{% url 'import_model' model=model %}"><li>{{ model }}</li></a>
 {% endfor %}
