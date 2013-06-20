@@ -62,8 +62,13 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'grappelli',
     'django.contrib.admin',
-    'assets',
+
+    # 3rd party apps
     'stronghold',
+    'south',
+
+    # homegrowns
+    'assets',
 )
 
 # List of finder classes that know how to find static files in
