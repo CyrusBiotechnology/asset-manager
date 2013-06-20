@@ -17,12 +17,29 @@ echo 'Activating virtual environment'
 source env/bin/activate
 
 # Install requirements
-echo 'Installing requirements (May require authentication!)'
-sudo apt-get install python-setuptools python-dev libjpeg62 libjpeg8-dev libfreetype6 libfreetype6-dev zlib1g-dev
-curl -O https://raw.github.com/pypa/pip/master/contrib/get-pip.py
-sudo python get-pip.py
+if [ "$(uname)" = "Linux" -a "$(lsb_release -d | awk /buntu/)" != "" ]; then # we only want to do apt-get install on supported systems
+  echo 'Installing requirements (May require authentication!)'
+  ubuntu_release=$(lsb_release -sr)
+  ubuntu_release_int=$(python -c "print '$ubuntu_release'.replace('.', '')")
+  sudo apt-get install \
+    build-essential \
+    python-setuptools \
+    python-dev \
+    libjpeg62 \
+    libjpeg8-dev \
+    libfreetype6 \
+    libfreetype6-dev \
+    zlib1g-dev -qy
+  if [ "$ubuntu_release_int" -ge "1009" ]; then
+    sudo apt-get install python-pip -qy
+    sudo pip install --upgrade pip
+  else
+    sudo easy_install pip
+    sudo pip install --upgrade virtualenv
+  fi
+fi
+
 sudo pip install --use-mirrors --download-cache ~/.pip-cache/ -r requirements.txt
-rm get-pip.py
 
 if [ ! -f  $local_settings ]; then
   echo "
