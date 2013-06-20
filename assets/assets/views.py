@@ -112,7 +112,7 @@ def ajax_search(request, model='asset'):
 
     return HttpResponse(data, mimetype="application/json")
 
-
+#import tool view
 def import_model(request, model):
     title = 'Importing ' + model + 's'
     template = 'import/import.html'
@@ -156,7 +156,7 @@ def import_model(request, model):
         context_instance=RequestContext(request)
     )
 
-
+#import index view
 def import_index(request):
     title = 'Please choose a category to import'
     sub_template = 'import/index.html'
@@ -169,7 +169,7 @@ def import_index(request):
         },
         context_instance=RequestContext(request))
 
-
+#manual database entry view
 def create_object(request, model):
     title = 'create new ' + model
     check_form(model)
@@ -209,7 +209,7 @@ def create_object(request, model):
         context_instance=RequestContext(request)
     )
 
-
+#display asset info
 def display_object(request, ID, model):
     title = model
     check_model(model)
@@ -240,7 +240,7 @@ def display_object(request, ID, model):
         context_instance=RequestContext(request)
     )
 
-
+#edit asset info
 def edit_object(request, ID, model):
     title = 'edit' + model
     check_model(model)
