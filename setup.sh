@@ -35,14 +35,14 @@ if [ "$?" -eq "0" ]; then
     fi
   fi
 fi
-sudo pip install -r requirements.txt
+
 # setup virtual env
 echo 'Setting up virtual environment (env)'
 virtualenv --no-site-packages env
 echo 'Activating virtual environment'
 source env/bin/activate
 
-
+pip install -r requirements.txt
 if [ ! -f  $local_settings ]; then
   cp "$local_settings_template" "$local_settings"
 fi
