@@ -41,7 +41,7 @@ echo 'Setting up virtual environment (env)'
 virtualenv --no-site-packages env
 echo 'Activating virtual environment'
 source env/bin/activate
-pip install --use-mirrors --download-cache ~/.pip-cache/ -r requirements.txt
+sudo pip install --use-mirrors --download-cache ~/.pip-cache/ -r requirements.txt
 
 if [ ! -f  $local_settings ]; then
   cp "$local_settings_template" "$local_settings"
