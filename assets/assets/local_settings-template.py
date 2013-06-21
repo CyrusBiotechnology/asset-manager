@@ -5,7 +5,7 @@ PROJECT_ROOT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '../../'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'south',
+        'ENGINE': 'django.db.backends.sqlite3',
         'NAME': '/var/db/asset-manager/assets.db'
     }
 }
