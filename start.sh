@@ -6,7 +6,7 @@ source ./env/bin/activate
 
 echo 'Syncing the database ...'
 ./assets/manage.py schemamigration assets --initial
-./assets/manage.py syncdb
+./assets/manage.py syncdb --migrate
 
 echo 'Running the server ...'
 ./assets/manage.py runserver 2000
