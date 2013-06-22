@@ -211,7 +211,7 @@ def create_object(request, model):
 
 #display asset info
 def display_object(request, ID, model):
-    title = ID
+    title = model
     check_model(model)
 
     object_template = 'generic/model-display.html'
