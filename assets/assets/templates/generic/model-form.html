@@ -8,7 +8,7 @@
       {% endfor %}
     </ul>
     {% endif %}
-    <div class="container">{{ field.label_tag }}<span class="form-field-container {{ field.field|klass }}">HEY!!!</span></div>
+    <div class="container">{{ field.label_tag }}<span class="form-field-container {{ field.field|klass }}">{{ field }}</span></div>
   {% endfor %}
   {% csrf_token %}
   <button class="submit-button">Submit</button>
