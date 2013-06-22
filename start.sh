@@ -5,7 +5,6 @@ echo 'Initializing Environment ...'
 source ./env/bin/activate
 
 echo 'Syncing the database ...'
-./assets/manage.py schemamigration assets --initial
 ./assets/manage.py syncdb --migrate
 
 echo 'Running the server ...'
