@@ -34,7 +34,7 @@ function query() {
 
 $(function(){
   
-  //$('.search-filter').last().after($('.search-filter-template').last().clone(withDataAndEvents=true));
+  $('.search-filter').last().after($('.search-filter-template').last().clone(withDataAndEvents=true));
   $('.search-filter-template').last().removeClass('search-filter-template');
 
   $('.add-filter').click(function(){
