@@ -41,12 +41,12 @@ $(function(){
   $('.add-filter').click(function(){
     $('.search-filter').last().after($('.search-filter-template').last().clone(withDataAndEvents=true));
     $('.search-filter-template').last().removeClass('search-filter-template');
-	$(filter_count).add(1)
+	$(filter_count ++);
   });
 
   $('.remove-filter').click(function(){
     $('.search-filter').last().remove();
-	$(filter_count).remove(1)
+	$(filter_count --);
   });
   
   $(search_element).focus();
