@@ -42,9 +42,9 @@ $(function(){
     $('.search-filter-template').last().removeClass('search-filter-template');
   });
 
-  $('.remove-filter').click(function(){
-    $('.search-filter').next().remove();
-  });
+  //$('.remove-filter').click(function(){
+    //$('.search-filter').next().remove();
+  //});
   
   $(search_element).focus();
   SR_template = $('#search-result-template').html();
