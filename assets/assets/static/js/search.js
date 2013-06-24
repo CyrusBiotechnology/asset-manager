@@ -43,7 +43,7 @@ $(function(){
   });
 
   $('.remove-filter').click(function(){
-    $('.search-filter').last().after($('.search-filter-template').last()remove();
+    $('.search-filter').last().after($('.search-filter-template').last()remove());
   };
   
   $(search_element).focus();
@@ -55,4 +55,4 @@ $(function(){
   $('.field-select').change(function(){
     query();
   });
-});
+}));
