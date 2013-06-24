@@ -41,15 +41,11 @@ $(function(){
     $('.search-filter').last().after($('.search-filter-template').last().clone(withDataAndEvents=true));
     $('.search-filter-template').last().removeClass('search-filter-template');
   });
-  
-  $('.search-filter').next().before($('.search-filter-template').next().remove(withDataAndEvents=true));
-  $('.search-filter-template').next().removeClass('search-filter-template');
-  
-  $('.remove-filter').click(function(){
-    $('.search-filter').next().before($('.search-filter-template').next().remove(withDataAndEvents=true));
-    $('.search-filter-template').next().removeClass('search-filter-template');
-  });
 
+  $('.remove-filter').click(function(){
+    $('.search-filter').last.remove();
+  };
+  
   $(search_element).focus();
   SR_template = $('#search-result-template').html();
   $(search_element).watermark('filter...');
