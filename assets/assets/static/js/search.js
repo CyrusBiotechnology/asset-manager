@@ -42,6 +42,9 @@ $(function(){
     $('.search-filter-template').last().removeClass('search-filter-template');
   });
   
+  $('.search-filter').last().after($('.search-filter-template').last().remove(withDataAndEvents=true));
+  $('.search-filter-template').last().removeClass('search-filter-template');
+  
   $('.remove-filter').click(function(){
     $('.search-filter').last().after($('.search-filter-template').last().remove(withDataAndEvents=true));
     $('.search-filter-template').last().removeClass('search-filter-template');
