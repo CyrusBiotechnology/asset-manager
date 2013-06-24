@@ -16,6 +16,10 @@
   cursor: pointer;
 }
 
+.remove-filter {
+  cursor: pointer;
+}
+
 .search-result div {
   display: inline-block;
 }
