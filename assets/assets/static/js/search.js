@@ -43,8 +43,8 @@ $(function(){
   });
 
   $('.remove-filter').click(function(){
-    $('.search-filter').next().after($('.search-filter-template').next()remove());
-  };
+    $('.search-filter').next().remove();
+  });
   
   $(search_element).focus();
   SR_template = $('#search-result-template').html();
