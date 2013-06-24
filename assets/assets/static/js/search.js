@@ -2,6 +2,7 @@
 var search_element = '.filter';
 var results_element = '#search-results';
 var search_url = 'se?';
+var filter_count = 1;
 
 SR_template = '';
 
@@ -40,10 +41,12 @@ $(function(){
   $('.add-filter').click(function(){
     $('.search-filter').last().after($('.search-filter-template').last().clone(withDataAndEvents=true));
     $('.search-filter-template').last().removeClass('search-filter-template');
+	$(filter_count).add(1)
   });
 
   $('.remove-filter').click(function(){
     $('.search-filter').last().remove();
+	$(filter_count).remove(1)
   });
   
   $(search_element).focus();

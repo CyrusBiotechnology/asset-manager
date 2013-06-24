@@ -1,7 +1,9 @@
 <div class="search-container">
   <div class="search-filter-template search-filter">
     <a class="add-filter" title="add search filter">+</a>
-	<a class="remove-filter" title="remove search filter">-</a>
+	{% if filter_count != 1 %}
+	  <a class="remove-filter" title="remove search filter">-</a>
+	{% endif % }
     <input class="filter" type="text">
     <select class="field-select">
       {% for field in model_fields %}
