@@ -1,13 +1,14 @@
 <div class="search-container">
   <div class="search-filter-template search-filter">
-	<a class="add-filter" title="add search filter">+</a>
-	<a class="remove-filter" title="remove search filter">-</a>
     <input class="filter" type="text">
     <select class="field-select">
       {% for field in model_fields %}
         <option value="{{ field }}" {% if field == 'description' %}selected="selected"{% endif %}>{{ field }}</option>
       {% endfor %}
     </select>
+	<br/>
+	<a class="add-filter" title="add search filter">+</a>
+	<a class="remove-filter" title="remove search filter">-</a>
   </div>
 </div>
 
