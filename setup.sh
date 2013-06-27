@@ -41,6 +41,7 @@ fi
 # setup virtual env
 echo 'Setting up virtual environment (env)'
 virtualenv --no-site-packages env
+pip install -r requirements.txt
 echo 'Activating virtual environment'
 source env/bin/activate
 
