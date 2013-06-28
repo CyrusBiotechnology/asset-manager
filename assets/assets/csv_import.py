@@ -17,11 +17,10 @@ def csv_import(request, uploaded_file_name, model_name):
     objects = []
 
     headers = []
+	try:
     with open(uploaded_file_name, 'rb') as csvfile:
         reader = csv.reader(csvfile, delimiter=' ', quotechar='|')
         first = True
-		except IOError:
-			print 'Please choose a file to upload'
         for row in reader:
             # First row is headers
             if first:
