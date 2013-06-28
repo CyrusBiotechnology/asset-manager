@@ -63,10 +63,10 @@ def csv_import(request, uploaded_file_name, model_name):
                         print 'object field is the wrong type!'
 	
     except IOError:
-	  print 'Please specify a file to upload'
+      print 'Please specify a file to upload'
 	  
 	except DoesNotExist:
-	  print 'Some specified fields do not exist in the database'
+      print 'Some specified fields do not exist in the database'
 		
     return {
         'returns': returns,
