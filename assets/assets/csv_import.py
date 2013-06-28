@@ -17,7 +17,6 @@ def csv_import(request, uploaded_file_name, model_name):
     objects = []
 
     headers = []
-  try:
     with open(uploaded_file_name, 'rb') as csvfile:
         reader = csv.reader(csvfile, delimiter=' ', quotechar='|')
         first = True
@@ -68,8 +67,6 @@ def csv_import(request, uploaded_file_name, model_name):
         'headers': headers,
         'objects_inserted': objects,
     }
-  except IntegrityError:
-	print 'Something went wrong... maybe the fields you tried to import don\'t exist?'
 
 def related_import(request):
     pass
