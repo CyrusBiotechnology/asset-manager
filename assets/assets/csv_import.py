@@ -19,7 +19,7 @@ def csv_import(request, uploaded_file_name, model_name):
     headers = []
 
     try:
-    with open(uploaded_file_name, 'rb') as csvfile:
+      with open(uploaded_file_name, 'rb') as csvfile:
         reader = csv.reader(csvfile, delimiter=' ', quotechar='|')
         first = True
         for row in reader:
@@ -63,7 +63,7 @@ def csv_import(request, uploaded_file_name, model_name):
                         print 'object field is the wrong type!'
 	
     except IOError:
-	print 'Please specify a file to upload'
+	  print 'Please specify a file to upload'
 		
     return {
         'returns': returns,
