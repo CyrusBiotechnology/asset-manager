@@ -33,7 +33,6 @@ if [ "$?" -eq "0" ]; then
     else
       sudo easy_install pip
       sudo pip install --upgrade virtualenv
-	  pip install -r requirements.txt
     fi
   fi
 fi
