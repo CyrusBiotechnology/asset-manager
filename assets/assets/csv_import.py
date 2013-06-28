@@ -1,4 +1,4 @@
-from django.db.utils import IntegrityError
+from django.db.utils import *
 
 from models import *
 from forms import *
