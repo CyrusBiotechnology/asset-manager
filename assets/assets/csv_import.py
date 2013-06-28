@@ -65,7 +65,7 @@ def csv_import(request, uploaded_file_name, model_name):
     except IOError:
       print 'Please specify a file to upload'
 	  
-    except Tag.DoesNotExist:
+    except DoesNotExist:
       print 'Some specified fields do not exist in the database'
 		
     return {
