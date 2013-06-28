@@ -17,7 +17,6 @@ def csv_import(request, uploaded_file_name, model_name):
     objects = []
 
     headers = []
-	try:
     with open(uploaded_file_name, 'rb') as csvfile:
         reader = csv.reader(csvfile, delimiter=' ', quotechar='|')
         first = True
