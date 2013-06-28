@@ -61,8 +61,6 @@ def csv_import(request, uploaded_file_name, model_name):
                     except TypeError:
                         print 'object field is the wrong type!'
 
-	
-		print 'Something went wrong... maybe the fields you tried to import don\'t exist?'
 		
     return {
         'returns': returns,
@@ -71,6 +69,7 @@ def csv_import(request, uploaded_file_name, model_name):
         'objects_inserted': objects,
     }
   except IntegrityError:
+	print 'Something went wrong... maybe the fields you tried to import don\'t exist?'
 
 def related_import(request):
     pass
