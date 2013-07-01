@@ -63,7 +63,7 @@ def csv_import(request, uploaded_file_name, model_name):
                     except TypeError:
                         print 'object field is the wrong type!'
 	    
-    except IOError:
+    if IOError:
       print 'No file specified'
       file_not_found == 1	  
 	
