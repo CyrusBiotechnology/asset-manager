@@ -16,6 +16,12 @@
 <br><br>
 {% endif %}
 
+{% if not upload_file_name %}
+<br><br>
+<p style="color: red;">Please specify a file, bitch</p>
+<br><br>
+{% endif %}
+
 <form enctype="multipart/form-data" method="post" style="margin: 50px 0; text-align: center;">
   {% csrf_token %}
   {% for field in upload_form %}
