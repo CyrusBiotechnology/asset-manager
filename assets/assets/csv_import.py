@@ -14,7 +14,6 @@ def csv_import(request, uploaded_file_name, model_name):
 
     returns = 0
     fields_not_found = []
-    file_not_found = 0
     objects = []
 
     headers = []
@@ -63,9 +62,9 @@ def csv_import(request, uploaded_file_name, model_name):
                     except TypeError:
                         print 'object field is the wrong type!'
 	    
-    if IOError:
+    except IOError:
       print 'No file specified'
-      file_not_found == 1	  
+      fields_not_found.append(field) 
 	
     return {
         'returns': returns,
