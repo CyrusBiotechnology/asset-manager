@@ -65,8 +65,7 @@ def csv_import(request, uploaded_file_name, model_name):
     except IOError:
       print 'Please specify a file to upload'
       for field in model_form:
-                    if [s for s in row if field not in s] and model_form[field].required:
-                        fields_not_found.append(field)
+        fields_not_found.append(field)
     
     except DoesNotExist:
       print 'Some specified fields do not exist in the database'
