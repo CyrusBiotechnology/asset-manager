@@ -14,6 +14,7 @@ def csv_import(request, uploaded_file_name, model_name):
 
     returns = 0
     fields_not_found = []
+	file_not_found = 0
     objects = []
 
     headers = []
