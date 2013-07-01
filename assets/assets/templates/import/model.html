@@ -18,7 +18,7 @@
 <br><br>
 {% endif %}
 
-<form enctype="multipart/form-data" method="post" style="margin: 50px 0; text-align: center;" required="True">
+<form enctype="multipart/form-data" method="post" style="margin: 50px 0; text-align: center;">
   {% csrf_token %}
   {% for field in upload_form %}
     {% if field.errors %}
