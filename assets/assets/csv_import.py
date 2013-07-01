@@ -19,6 +19,9 @@ def csv_import(request, uploaded_file_name, model_name):
     headers = []
 		
     with open(uploaded_file_name, 'rb') as csvfile:
+      if upload_file_name == None:
+        print 'None!'
+      else:
         reader = csv.reader(csvfile, delimiter=' ', quotechar='|')
         first = True
         for row in reader:
