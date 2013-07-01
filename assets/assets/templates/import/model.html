@@ -31,7 +31,7 @@
     {{ field }}
   {% endfor %}
   <br>
-  {% if upload_file_name != None %}
+  {% if form.has_changed() %}
     <input type="submit" value="submit" class="clear">
   {% endif %}
 </form>
