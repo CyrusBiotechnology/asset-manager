@@ -14,14 +14,19 @@ def csv_import(request, uploaded_file_name, model_name):
 
     returns = 0
     fields_not_found = []
+	file_not_found = 0
     objects = []
 
     headers = []
-
-    with open(uploaded_file_name, 'rb') as csvfile:
-        reader = csv.reader(csvfile, delimiter=' ', quotechar='|')
-        first = True
-        for row in reader:
+	
+	
+      with open(uploaded_file_name, 'rb') as csvfile:
+	    if upload_file_name == None:
+		  file_not_found == 1
+		else:
+         reader = csv.reader(csvfile, delimiter=' ', quotechar='|')
+         first = True
+         for row in reader:
             # First row is headers
             if first:
                 first = False
@@ -46,9 +51,9 @@ def csv_import(request, uploaded_file_name, model_name):
                 print obj
                 objects.append(obj)
 
-        try:
+         try:
             model.objects.bulk_create(objects)
-        except IntegrityError:
+         except IntegrityError:
             #  Since our bulk import failed, we've got to import our objects one by one
             print 'bulk import failed! trying to import individually'
             for mobject in objects:
