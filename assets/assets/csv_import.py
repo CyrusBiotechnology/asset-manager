@@ -64,7 +64,7 @@ def csv_import(request, uploaded_file_name, model_name):
 	    
     except IOError:
       print 'No file specified'
-      fields_not_found.append(field) 
+      fields_not_found.append('Please specify a file to upload') 
 	
     return {
         'returns': returns,
