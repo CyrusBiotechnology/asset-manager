@@ -21,7 +21,7 @@ def csv_import(request, uploaded_file_name, model_name):
 	
 	
       with open(uploaded_file_name, 'rb') as csvfile:
-	    if upload_file_name == None:
+        if upload_file_name == None:
           file_not_found == 1
         reader = csv.reader(csvfile, delimiter=' ', quotechar='|')
         first = True
