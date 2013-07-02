@@ -43,7 +43,7 @@ $(function(){
   });
 
   $('.remove-filter').click(function(){
-    $('.search-filter').position().remove();
+    $('.search-filter').last().remove();
   });
   
   $(search_element).focus();
