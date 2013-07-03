@@ -14,10 +14,12 @@
 
 .add-filter {
   cursor: pointer;
+  float: left;
 }
 
 .remove-filter {
   cursor: pointer;
+  float: left;
 }
 
 .search-result div {
