@@ -15,13 +15,13 @@
 .add-filter {
   cursor: pointer;
   float: left;
-  padding: 10px;
+  padding: 5px;
 }
 
 .remove-filter {
   cursor: pointer;
   float: left;
-  padding: 10px;
+  padding: 5px;
 }
 
 .search-result div {
