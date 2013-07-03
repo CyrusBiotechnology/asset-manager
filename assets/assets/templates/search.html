@@ -13,6 +13,10 @@
 
 <p class="js-warning">You need javascript enabled to use this app.</p>
 
+{% if filter_count == 1 %}
+  <a>success</a>
+{% endif %}
+
 <script id="search-result-template" type="text/html">
   <div class="search-result">
     <a href="{% url 'asset_list' %}{% templatetag openvariable %} pk {% templatetag closevariable %}">
