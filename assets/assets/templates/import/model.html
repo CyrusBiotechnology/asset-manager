@@ -20,9 +20,6 @@
 
 <form enctype="multipart/form-data" method="post" style="margin: 50px 0; text-align: center;">
   {% csrf_token %}
-  {% if field.empty %}
-    <ul>Please specify a file to upload</ul>
-  {% endif %}
   {% for field in upload_form %}
     {% if field.errors %}
     <ul>
