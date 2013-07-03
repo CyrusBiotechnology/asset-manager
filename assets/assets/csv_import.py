@@ -61,7 +61,7 @@ def csv_import(request, uploaded_file_name, model_name):
                     except TypeError:
                         print 'object field is the wrong type!'
 	
-    except error:
+    except Error:
 	  print 'Motherfucking problems'
 	
     return {
