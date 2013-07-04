@@ -14,14 +14,16 @@
 
 .add-filter {
   cursor: pointer;
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
 }
 
 .remove-filter {
   cursor: pointer;
-  margin-top:100px;
-  margin-bottom:100px;
-  margin-right:50px;
-  margin-left:50px;
+  position: fixed;
+  bottom: 10px;
+  left: 20px;
 }
 
 .search-result div {
