@@ -14,14 +14,14 @@
 
 .add-filter {
   cursor: pointer;
-  position: fixed;
+  position: relative;
   bottom: 10px;
   left: 10px;
 }
 
 .remove-filter {
   cursor: pointer;
-  position: fixed;
+  position: relative;
   bottom: 10px;
   left: 20px;
 }
