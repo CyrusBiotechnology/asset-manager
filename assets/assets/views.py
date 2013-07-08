@@ -129,7 +129,7 @@ def import_model(request, model):
         upload = ImportFile(**upload_form.cleaned_data)
         upload.save()
         csv_import_output = csv_import(request, upload.uploaded.name, model)
-        if uploaded.name == None:
+        if upload.uploaded.name == None:
 			upload.upload.delete()
 			upload.delete()
         elif csv_import_output['returns'] == 1:
