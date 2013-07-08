@@ -129,9 +129,9 @@ def import_model(request, model):
         upload = ImportFile(**upload_form.cleaned_data)
         upload.save()
         csv_import_output = csv_import(request, upload.uploaded.name, model)
-		if uploaded.name == None:
+        if uploaded.name == None:
 			upload.upload.delete()
-			ipload.delete()
+			upload.delete()
         elif csv_import_output['returns'] == 1:
             fields_not_found = csv_import_output['fields_not_found']
             upload.uploaded.delete()
