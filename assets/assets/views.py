@@ -124,6 +124,7 @@ def import_model(request, model):
     headers = []
 
     if request.method == 'POST':
+      try:
         upload_form = ImportFileForm(request.POST, request.FILES)
         upload_form.is_valid()
         upload = ImportFile(**upload_form.cleaned_data)
@@ -140,7 +141,8 @@ def import_model(request, model):
             headers = csv_import_output['headers']
             for obj in objects_inserted:
                 objects_inserted_forms.append(modelForms[model](instance=obj))
-
+      except OSError:
+	    print 'OSError'
     return render_to_response(
         template,
         {
