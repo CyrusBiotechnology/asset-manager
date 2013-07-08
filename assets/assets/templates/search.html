@@ -9,7 +9,9 @@
   </div>
   <br/>
  <a class="add-filter" title="add search filter">+</a>
- <a class="remove-filter" title="remove search filter">-</a>
+ {% if search.filter_count > 2 %}
+   <a class="remove-filter" title="remove search filter">-</a>
+ {% endif %}
 </div>
 
 <p class="js-warning">You need javascript enabled to use this app.</p>
