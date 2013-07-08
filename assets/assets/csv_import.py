@@ -67,9 +67,9 @@ def csv_import(request, uploaded_file_name, model_name):
       print 'No file specified'
       returns = 1	  
 	
-	except OSError:
+    except OSError:
       print 'OSError'
-	  returns = 1
+      returns = 1
 	
     return {
         'returns': returns,
