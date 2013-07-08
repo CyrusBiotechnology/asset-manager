@@ -18,8 +18,7 @@ def csv_import(request, uploaded_file_name, model_name):
 
     headers = []
 	
-    try:	
-      with open(uploaded_file_name, 'rb') as csvfile:
+    with open(uploaded_file_name, 'rb') as csvfile:
         reader = csv.reader(csvfile, delimiter=' ', quotechar='|')
         first = True
         for row in reader:
@@ -61,10 +60,6 @@ def csv_import(request, uploaded_file_name, model_name):
                         mobject.validate_unique()
                     except TypeError:
                         print 'object field is the wrong type!'
-	
-	
-    except IOError:
-      print 'No file specified'
 	
     return {
         'returns': returns,
