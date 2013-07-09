@@ -2,6 +2,7 @@
 var search_element = '.filter';
 var results_element = '#search-results';
 var search_url = 'se?';
+var filter_count = {{ filter_count }} = 1;
 
 SR_template = '';
 
