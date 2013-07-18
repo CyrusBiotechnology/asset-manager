@@ -274,15 +274,6 @@ def edit_object(request, ID, model):
         context_instance=RequestContext(request)
     )
 
-class projectForm(forms.ModelForm):
-
-    contact = forms.ModelChoiceField(Contact.objects, widget=SelectWithPop)
-    tags = forms.ModelMultipleChoiceField(Tag.objects, required=False, widget=MultipleSelectWithPop)
-    class Meta:
-        model = Task
-        fields = ['title', 'parent', 'details', 'assignees', 'contact', 'tags']
-
-
 def search_all_fields(**kwargs):
     try:
         kwargs = {
