@@ -1,7 +1,6 @@
 from django.forms import ModelForm
 from assets.models import *
-from django.template.loader import render_to_string
-import django.forms as forms 
+
 
 
 '''

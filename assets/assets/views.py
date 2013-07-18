@@ -3,7 +3,6 @@ from django.template import RequestContext
 from django.core import serializers
 from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseRedirect
 import logging
-from myapps.projects.models import Task, Contact, Tag
 
 from assets.models import *
 from assets.forms import *
