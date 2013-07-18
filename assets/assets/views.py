@@ -3,6 +3,7 @@ from django.template import RequestContext
 from django.core import serializers
 from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseRedirect
 import logging
+from myapps.projects.models import Task, Contact, Tag
 
 from assets.models import *
 from assets.forms import *
@@ -272,6 +273,14 @@ def edit_object(request, ID, model):
         },
         context_instance=RequestContext(request)
     )
+
+class projectForm(forms.ModelForm):
+
+    contact = forms.ModelChoiceField(Contact.objects, widget=SelectWithPop)
+    tags = forms.ModelMultipleChoiceField(Tag.objects, required=False, widget=MultipleSelectWithPop)
+    class Meta:
+        model = Task
+        fields = ['title', 'parent', 'details', 'assignees', 'contact', 'tags']
 
 
 def search_all_fields(**kwargs):
