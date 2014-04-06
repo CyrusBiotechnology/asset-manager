@@ -1,15 +1,19 @@
 <!DOCTYPE html>
 <html>
   <head>
+    {% compress css %}
     <link rel="stylesheet" type="text/css" href="/s/css/main.css">
     <link rel="stylesheet" type="text/css" href="/s/css/jquery-ui.css">
+    {% endcompress %}
+    {% compress js %}
     <script src="/s/js/jquery-1.9.1.min.js"></script>
     <script src="/s/js/jquery.watermark.min.js"></script>
     <script src="/s/js/mustache.js"></script>
     <script src="/s/js/jquery-extensions.js"></script>
     <script src="/s/js/jquery-ui.js"></script>
     <script src="/s/js/main.js"></script>
-	<script src="/s/js/RelatedObjectLookups.js"></script> 
+    <script src="/s/js/RelatedObjectLookups.js"></script>
+    {% endcompress %}
     {% block extra_head %}
     {% endblock %}
   </head>

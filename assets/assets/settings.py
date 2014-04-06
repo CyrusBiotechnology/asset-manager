@@ -64,8 +64,9 @@ INSTALLED_APPS = (
     'django.contrib.admin',
 
     # 3rd party apps
-    'stronghold',
+    'compressor',
     'south',
+    'stronghold',
 
     # homegrowns
     'assets',
@@ -93,7 +94,9 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
     'stronghold.middleware.LoginRequiredMiddleware',
+    'compressor.finders.CompressorFinder',
 )
 
 
