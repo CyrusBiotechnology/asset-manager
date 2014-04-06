@@ -10,33 +10,6 @@ secret_key="$(python -c 'import random; print "".join([random.choice("abcdefghij
 # This files location
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-# Install prerequisites
-lsb_release > /dev/null 2>&1
-if [ "$?" -eq "0" ]; then
-  if [ "$(uname)" = "Linux" -a "$(lsb_release -d | awk /buntu/)" != "" ]; then # we only want to do apt-get install on supported systems
-    echo 'Installing requirements (May require authentication!)'
-    ubuntu_release=$(lsb_release -sr)
-    ubuntu_release_int=$(python -c "print '$ubuntu_release'.replace('.', '')")
-    sudo apt-get install \
-      build-essential \
-      python-setuptools \
-      python-dev \
-      libjpeg62 \
-      libjpeg8-dev \
-      libfreetype6 \
-      libfreetype6-dev \
-      zlib1g-dev -qy
-    if [ "$ubuntu_release_int" -ge "1009" ]; then
-      sudo apt-get install python-pip -qy
-      sudo pip install --upgrade pip
-	  sudo pip install -r requirements.txt
-    else
-      sudo easy_install pip
-      sudo pip install --upgrade virtualenv
-    fi
-  fi
-fi
-
 # setup virtual env
 echo 'Setting up virtual environment (env)'
 virtualenv --no-site-packages env
@@ -47,5 +20,3 @@ source env/bin/activate
 if [ ! -f  $local_settings ]; then
   cp "$local_settings_template" "$local_settings"
 fi
-
-echo 'If there were no errors in setup you may now run ./start.sh to start the server.'
