@@ -32,10 +32,11 @@
       <a href="{% url 'create_make' %}">Make</a>
 	{% endif %}
   {% endif %}
+  &middot;
   {% if request.path %}
     {% if request.path != '/import/' %}
-	  &middot;
       <a href="{% url 'import' %}">Import</a>
     {% endif %}
   {% endif %}
+  <a href="/admin">Admin</a>
 </nav>

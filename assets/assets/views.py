@@ -112,7 +112,7 @@ def ajax_search(request, model='asset'):
 
     return HttpResponse(data, mimetype="application/json")
 
-
+#import tool view
 def import_model(request, model):
     title = 'Importing ' + model + 's'
     template = 'import/import.html'
@@ -124,6 +124,7 @@ def import_model(request, model):
     headers = []
 
     if request.method == 'POST':
+      try:
         upload_form = ImportFileForm(request.POST, request.FILES)
         upload_form.is_valid()
         upload = ImportFile(**upload_form.cleaned_data)
@@ -140,7 +141,8 @@ def import_model(request, model):
             headers = csv_import_output['headers']
             for obj in objects_inserted:
                 objects_inserted_forms.append(modelForms[model](instance=obj))
-
+      except OSError:
+	    print 'OSError'
     return render_to_response(
         template,
         {
@@ -156,7 +158,7 @@ def import_model(request, model):
         context_instance=RequestContext(request)
     )
 
-
+#import index view
 def import_index(request):
     title = 'Please choose a category to import'
     sub_template = 'import/index.html'
@@ -169,7 +171,7 @@ def import_index(request):
         },
         context_instance=RequestContext(request))
 
-
+#manual database entry view
 def create_object(request, model):
     title = 'create new ' + model
     check_form(model)
@@ -209,7 +211,7 @@ def create_object(request, model):
         context_instance=RequestContext(request)
     )
 
-
+#display asset info
 def display_object(request, ID, model):
     title = model
     check_model(model)
@@ -240,9 +242,9 @@ def display_object(request, ID, model):
         context_instance=RequestContext(request)
     )
 
-
+#edit asset info
 def edit_object(request, ID, model):
-    title = 'edit' + model
+    title = 'edit ' + model
     check_model(model)
     object_template = 'generic/model-form.html'
     model_object = modelModels[model]
@@ -270,7 +272,6 @@ def edit_object(request, ID, model):
         },
         context_instance=RequestContext(request)
     )
-
 
 def search_all_fields(**kwargs):
     try:

@@ -5,6 +5,8 @@
   <li class="{% if field.field.required %}required{% endif %}">{{ field.name }}{% if field.field.required %}*{% endif %}</li>
 {% endfor %}
 
+
+
 {% if fields_not_found %}
 <br><br>
 <p style="color: red;">Please check your file, the following required fields were not recognized:</p>
@@ -19,7 +21,7 @@
 <form enctype="multipart/form-data" method="post" style="margin: 50px 0; text-align: center;">
   {% csrf_token %}
   {% for field in upload_form %}
-    {% if field.errors%}
+    {% if field.errors %}
     <ul>
       {% for error in field.errors %}
       <li>{{ error }}</li>

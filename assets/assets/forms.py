@@ -2,6 +2,7 @@ from django.forms import ModelForm
 from assets.models import *
 
 
+
 '''
 
 Model forms. Keep 'em generic!

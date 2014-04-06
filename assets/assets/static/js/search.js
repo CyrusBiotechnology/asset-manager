@@ -42,6 +42,10 @@ $(function(){
     $('.search-filter-template').last().removeClass('search-filter-template');
   });
 
+  $('.remove-filter').click(function(){
+    $('.search-filter').last().remove();
+  });
+  
   $(search_element).focus();
   SR_template = $('#search-result-template').html();
   $(search_element).watermark('filter...');

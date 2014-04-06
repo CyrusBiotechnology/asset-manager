@@ -1,6 +1,5 @@
 <div class="search-container">
   <div class="search-filter-template search-filter">
-    <a class="add-filter" title="add search filter">+</a>
     <input class="filter" type="text">
     <select class="field-select">
       {% for field in model_fields %}
@@ -8,6 +7,9 @@
       {% endfor %}
     </select>
   </div>
+  <br/>
+ <a class="add-filter" title="add search filter">+</a>
+ <a class="remove-filter" title="remove search filter">-</a>
 </div>
 
 <p class="js-warning">You need javascript enabled to use this app.</p>

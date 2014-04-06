@@ -29,6 +29,7 @@ if [ "$?" -eq "0" ]; then
     if [ "$ubuntu_release_int" -ge "1009" ]; then
       sudo apt-get install python-pip -qy
       sudo pip install --upgrade pip
+	  sudo pip install -r requirements.txt
     else
       sudo easy_install pip
       sudo pip install --upgrade virtualenv
@@ -39,9 +40,9 @@ fi
 # setup virtual env
 echo 'Setting up virtual environment (env)'
 virtualenv --no-site-packages env
+pip install -r requirements.txt
 echo 'Activating virtual environment'
 source env/bin/activate
-pip install --use-mirrors --download-cache ~/.pip-cache/ -r requirements.txt
 
 if [ ! -f  $local_settings ]; then
   cp "$local_settings_template" "$local_settings"
