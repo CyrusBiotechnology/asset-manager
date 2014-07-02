@@ -5,3 +5,6 @@ env/*
 local_settings.py
 settings_local.py
 secret.txt
+
+media/*
+static/*
