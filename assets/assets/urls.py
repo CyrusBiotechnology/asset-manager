@@ -72,6 +72,7 @@ urlpatterns = patterns('',
 
     url(r'^import/', include(import_patterns)),
 
+    url(r'^admin/', include('smuggler.urls')), # keep before admin url patterns
     url(r'^admin/', include(admin.site.urls)),
     url(r'^accounts/', include(auth_patterns)),
     url(r'^grappelli/', include('grappelli.urls')),
