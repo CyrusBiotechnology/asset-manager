@@ -65,9 +65,10 @@ INSTALLED_APPS = (
     'django.contrib.admin',
 
     # 3rd party apps
-    'compressor',
-    'south',
-    'stronghold',
+    'compressor', # on-the-fly minification of js and css
+    'south', # data model migrations
+    'smuggler', # json import / export from admin site
+    'stronghold', # password protect entire ite
 
     # homegrowns
     'assets',
