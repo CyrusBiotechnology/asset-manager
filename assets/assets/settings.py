@@ -1,6 +1,7 @@
-# Django settings for assets project.
-from django.conf import global_settings
+from datetime import timedelta
 import socket
+
+from django.conf import global_settings
 
 
 try:
@@ -116,6 +117,8 @@ STRONGHOLD_PUBLIC_URLS = (
     '/admin',
     '/accounts'
 )
+
+AXES_COOLOFF_TIME = timedelta(seconds=60)
 
 try:
     from local_settings import *
